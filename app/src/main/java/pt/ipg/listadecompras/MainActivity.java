@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Carregou para adicionar produto", Toast.LENGTH_SHORT).show();
+                setContentView();
             }
         });
 
