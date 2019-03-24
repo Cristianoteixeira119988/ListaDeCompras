@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".PaginaAddProduto"
-    tools:showIn="@layout/activity_pagina_add_produto">
+    tools:context=".AdicionarProduto"
+    tools:showIn="@layout/activity_adicionar_produto">
 
 </android.support.constraint.ConstraintLayout>

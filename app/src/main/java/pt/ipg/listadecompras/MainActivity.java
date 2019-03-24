@@ -1,5 +1,6 @@
 package pt.ipg.listadecompras;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Carregou para adicionar produto", Toast.LENGTH_SHORT).show();
-                setContentView();
+                Intent outraActivity = new Intent(MainActivity.this, AdicionarProduto.class);
+                startActivity(outraActivity);
             }
         });
 
@@ -47,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Carregou para ver lista de compras", Toast.LENGTH_SHORT).show();
+                Intent outraActivity = new Intent(MainActivity.this, ListaTotal.class);
+                startActivity(outraActivity);
             }
         });
+
 
     }
 
