@@ -8,8 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button botao;
+    private Button botao2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,24 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        botao=(Button) findViewById(R.id.buttonAddProduto);
+        botao2=(Button) findViewById(R.id.buttonListaTotal);
+
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Carregou para adicionar produto", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        botao2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Carregou para ver lista de compras", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
