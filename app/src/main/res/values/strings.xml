@@ -6,4 +6,6 @@
     <string name="title_activity_pagina_add_produto">PaginaAddProduto</string>
     <string name="title_activity_lista_total">ListaTotal</string>
     <string name="title_activity_adicionar_produto">AdicionarProduto</string>
+    <string name="todas_as_listas">Todas As Listas</string>
+    <string name="criar_lista">Criar Lista</string>
 </resources>
