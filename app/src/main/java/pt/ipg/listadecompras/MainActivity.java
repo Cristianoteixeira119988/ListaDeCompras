@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button botao;
     private Button botao2;
+    private Button botaocriarlista;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +26,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         botao=(Button) findViewById(R.id.buttonAddProduto);
         botao2=(Button) findViewById(R.id.buttonListaTotal);
+        botaocriarlista=(Button) findViewById(R.id.buttonCriarLista);
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        botaocriarlista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Carregou para criar uma nova lista", Toast.LENGTH_SHORT).show();
+                Intent outraActivity =  new Intent(MainActivity.this, CriarLista.class);
+                startActivity(outraActivity);
+            }
+        });
 
     }
 

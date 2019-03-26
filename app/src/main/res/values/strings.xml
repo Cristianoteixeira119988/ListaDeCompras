@@ -12,4 +12,13 @@
     <string name="mercearia">Mercearia</string>
     <string name="bricolage">bricolage</string>
     <string name="vestu_rio">Vestuário</string>
+    <string name="title_activity_criar_lista_mercearia">Criar Lista De Mercearia</string>
+    <string name="nome_para_a_lista">Nome para a lista:</string>
+    <string name="data_de_cria_o">Data de criação:</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="escreva_aqui">Escreva aqui</string>
+    <string name="nome_obrigatorio">Nome da lista obrigatório</string>
+    <string name="caracteres">Contem caracteres especiais</string>
+    <string name="lista_criada">Lista Criada</string>
 </resources>
