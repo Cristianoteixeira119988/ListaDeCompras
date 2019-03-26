@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista De Compras</string>
+    <string name="action_settings">Opções</string>
+    <string name="adicionar_produto">Adicionar Produto</string>
+    <string name="lista_total">Todas as listas</string>
+    <string name="title_activity_pagina_add_produto">PaginaAddProduto</string>
+    <string name="title_activity_lista_total">Todas as listas</string>
+    <string name="title_activity_adicionar_produto">Adicionar Produto</string>
+    <string name="todas_as_listas">Todas As Listas</string>
+    <string name="criar_lista">Criar Lista</string>
+    <string name="title_activity_criar_lista">Criar Lista</string>
+    <string name="mercearia">Mercearia</string>
+    <string name="bricolage">Bricolage</string>
+    <string name="vestu_rio">Vestuário</string>
+    <string name="title_activity_criar_lista_mercearia">Criar Lista De Mercearia</string>
+    <string name="nome_para_a_lista">Nome para a lista:</string>
+    <string name="data_de_cria_o">Data de criação:</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="escreva_aqui">Escreva aqui</string>
+    <string name="nome_obrigatorio">Nome da lista obrigatório</string>
+    <string name="caracteres">Contem caracteres especiais</string>
+    <string name="lista_criada">Lista Criada</string>
+    <string name="carregou_para_criar_lista">Carregou para criar uma nova lista</string>
+    <string name="carregou_para_adicionar_produto">Carregou para adicionar um produto</string>
+    <string name="carregou_para_ver_lista_compras">Carregou para ver as listas de compras</string>
+</resources>

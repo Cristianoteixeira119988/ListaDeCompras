@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Carregou para adicionar produto", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_adicionar_produto), Toast.LENGTH_SHORT).show();
                 Intent outraActivity = new Intent(MainActivity.this, AdicionarProduto.class);
                 startActivity(outraActivity);
             }
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         botao2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Carregou para ver lista de compras", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_ver_lista_compras), Toast.LENGTH_SHORT).show();
                 Intent outraActivity = new Intent(MainActivity.this, ListaTotal.class);
                 startActivity(outraActivity);
             }
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         botaocriarlista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Carregou para criar uma nova lista", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista), Toast.LENGTH_SHORT).show();
                 Intent outraActivity =  new Intent(MainActivity.this, CriarLista.class);
                 startActivity(outraActivity);
             }

@@ -27,7 +27,7 @@ public class CriarLista extends AppCompatActivity {
         botaomercearia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Carregou para criar uma nova lista de mercearia", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista), Toast.LENGTH_SHORT).show();
                 Intent NovaActivity = new Intent(CriarLista.this, CriarListaMercearia.class);
                 startActivity(NovaActivity);
             }
