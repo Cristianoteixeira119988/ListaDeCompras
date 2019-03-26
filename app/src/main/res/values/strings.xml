@@ -8,4 +8,8 @@
     <string name="title_activity_adicionar_produto">AdicionarProduto</string>
     <string name="todas_as_listas">Todas As Listas</string>
     <string name="criar_lista">Criar Lista</string>
+    <string name="title_activity_criar_lista">Criar Lista</string>
+    <string name="mercearia">Mercearia</string>
+    <string name="bricolage">bricolage</string>
+    <string name="vestu_rio">Vestuário</string>
 </resources>
