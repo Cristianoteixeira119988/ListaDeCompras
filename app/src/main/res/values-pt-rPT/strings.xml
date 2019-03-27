@@ -25,4 +25,6 @@
     <string name="carregou_para_criar_lista">Carregou para criar uma nova lista</string>
     <string name="carregou_para_adicionar_produto">Carregou para adicionar um produto</string>
     <string name="carregou_para_ver_lista_compras">Carregou para ver as listas de compras</string>
+    <string name="numero_maximo_de_caracters">Excedeu os 25 caracteres</string>
+    <string name="numero_minimo_de_caracters">Contem menos de 3 caracteres</string>
 </resources>

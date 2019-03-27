@@ -36,13 +36,16 @@ public class CriarListaMercearia extends AppCompatActivity {
                 String mensagem = TextEditNomelista.getText().toString();
                 if (mensagem.trim().length() == 0){
                     TextEditNomelista.setError(getString(R.string.nome_obrigatorio));
-                }else if (!mensagem.matches("[a-z~@#$%&*:;<>.,/{}+]*")){
-                    TextEditNomelista.setError(getString(R.string.caracteres));
+                }else if (mensagem.length() <= 3){
+                    TextEditNomelista.setError(getString(R.string.numero_minimo_de_caracters));
+                }else if(mensagem.length() >= 25){
+                    TextEditNomelista.setError(getString(R.string.numero_maximo_de_caracters));
                 }else {
-                    finish();
-                    Toast.makeText(CriarListaMercearia.this, getString(R.string.lista_criada), Toast.LENGTH_SHORT).show();
+                        finish();
+                        Toast.makeText(CriarListaMercearia.this, getString(R.string.lista_criada), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+
         });
 
         botaocancelar.setOnClickListener(new View.OnClickListener() {

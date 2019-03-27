@@ -24,4 +24,6 @@
     <string name="carregou_para_criar_lista">Loaded to create a new playlist</string>
     <string name="carregou_para_adicionar_produto">Loaded to add a product</string>
     <string name="carregou_para_ver_lista_compras">Loaded to view shopping lists</string>
+    <string name="numero_maximo_de_caracters">25 Characters Exceeded</string>
+    <string name="numero_minimo_de_caracters">Contain less than 3 characters</string>
 </resources>

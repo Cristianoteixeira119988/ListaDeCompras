@@ -14,7 +14,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:text="@string/nome_para_a_lista"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="24sp"
@@ -40,7 +40,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,23 +51,25 @@
         android:layout_height="70dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/editTextNomeLista"
-        android:layout_width="384dp"
+        android:layout_width="699dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/escreva_aqui"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeParaLista"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeParaLista" />
 
 </android.support.constraint.ConstraintLayout>
