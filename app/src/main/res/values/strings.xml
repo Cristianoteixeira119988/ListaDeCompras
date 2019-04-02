@@ -41,4 +41,7 @@
     <string name="nome_da_lista_a_apagar">Nome da lista a apagar:</string>
     <string name="carregar_botao_apagar">Carregou para apagar</string>
     <string name="carregar_botao_editar_lista">Carregou para editar lista</string>
+    <string name="lista_alterada">Lista alterada</string>
+    <string name="data">Data</string>
+    <string name="lista_apagada">Lista apagada com sucesso</string>
 </resources>
