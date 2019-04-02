@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_ver_lista_compras), Toast.LENGTH_SHORT).show();
-                Intent outraActivity = new Intent(MainActivity.this, ListaTotal.class);
+                Intent outraActivity = new Intent(MainActivity.this, MinhasListas.class);
                 startActivity(outraActivity);
             }
         });

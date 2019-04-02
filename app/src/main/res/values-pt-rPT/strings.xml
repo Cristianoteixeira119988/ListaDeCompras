@@ -3,11 +3,11 @@
     <string name="app_name">Lista De Compras</string>
     <string name="action_settings">Opções</string>
     <string name="adicionar_produto">Adicionar Produto</string>
-    <string name="lista_total">Todas as listas</string>
+    <string name="lista_total">" Minhas listas"</string>
     <string name="title_activity_pagina_add_produto">PaginaAddProduto</string>
-    <string name="title_activity_lista_total">Todas as listas</string>
+    <string name="title_activity_lista_total">Minhas listas</string>
     <string name="title_activity_adicionar_produto">Adicionar Produto</string>
-    <string name="todas_as_listas">Todas As Listas</string>
+    <string name="todas_as_listas">Minhas listas</string>
     <string name="criar_lista">Criar Lista</string>
     <string name="title_activity_criar_lista">Criar Lista</string>
     <string name="mercearia">Mercearia</string>

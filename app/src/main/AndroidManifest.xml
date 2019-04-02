@@ -10,9 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ApagarLista"
+            android:label="@string/title_activity_apagar_lista"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EditarLista"
+            android:label="@string/title_activity_editar_lista"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MinhasListas"
+            android:label="@string/title_activity_minhas_listas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".CriarListaMercearia"
             android:label="@string/title_activity_criar_lista_mercearia"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CriarLista"
             android:label="@string/title_activity_criar_lista"
@@ -20,10 +32,6 @@
         <activity
             android:name=".AdicionarProduto"
             android:label="@string/title_activity_adicionar_produto"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ListaTotal"
-            android:label="@string/title_activity_lista_total"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"

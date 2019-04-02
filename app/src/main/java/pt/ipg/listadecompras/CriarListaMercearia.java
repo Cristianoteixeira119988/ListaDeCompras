@@ -25,7 +25,7 @@ public class CriarListaMercearia extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         botaoguardar = (Button) findViewById(R.id.buttonGuardar);
-        TextEditNomelista= (EditText) findViewById(R.id.editTextNomeLista);
+        TextEditNomelista= (EditText) findViewById(R.id.EditTextNomeDalista);
         botaocancelar = (Button) findViewById(R.id.buttonCancelar);
 
 
@@ -33,6 +33,7 @@ public class CriarListaMercearia extends AppCompatActivity {
         botaoguardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String mensagem = TextEditNomelista.getText().toString();
                 if (mensagem.trim().length() == 0){
                     TextEditNomelista.setError(getString(R.string.nome_obrigatorio));
