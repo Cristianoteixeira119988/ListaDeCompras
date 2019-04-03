@@ -27,4 +27,22 @@
     <string name="carregou_para_ver_lista_compras">Carregou para ver as listas de compras</string>
     <string name="numero_maximo_de_caracters">Excedeu os 25 caracteres</string>
     <string name="numero_minimo_de_caracters">Contem menos de 3 caracteres</string>
+    <string name="title_activity_minhas_listas">Minhas Listas</string>
+    <string name="nome_das_listas">Nome das listas:</string>
+    <string name="editar_lista">Editar lista</string>
+    <string name="apagar_lista">Apagar lista</string>
+    <string name="title_activity_editar_lista">Editar Lista</string>
+    <string name="novo_nome">Nome novo</string>
+    <string name="nome">Nome</string>
+    <string name="novo_nome_para_a_lista">Novo nome para a lista:</string>
+    <string name="nome_da_lista_a_editar">Nome da lista a editar:</string>
+    <string name="nome_da_lista_a_apagar">Nome da lista a apagar:</string>
+    <string name="nome_da_lista">Nome da lista</string>
+    <string name="lista_apagada">Lista apagada com sucesso</string>
+    <string name="lista_alterada">Lista alterada</string>
+    <string name="eleminar">Eliminar</string>
+    <string name="data">Data</string>
+    <string name="carregar_botao_editar_lista">Carregou para editar lista</string>
+    <string name="carregar_botao_apagar">Carregou para apagar</string>
+    <string name="title_activity_apagar_lista">Apagar Lista</string>
 </resources>
