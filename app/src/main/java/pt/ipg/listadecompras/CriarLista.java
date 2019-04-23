@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class CriarLista extends AppCompatActivity {
 
     private Button botaomercearia;
+    private Button botaobricolage;
+    private Button botaovestuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,8 @@ public class CriarLista extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         botaomercearia = (Button) findViewById(R.id.buttonMercearia);
+        botaobricolage= (Button) findViewById(R.id.buttonBricolage);
+        botaovestuario= (Button) findViewById(R.id.buttonVestuario);
 
 
 
@@ -29,6 +33,22 @@ public class CriarLista extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista), Toast.LENGTH_SHORT).show();
                 Intent NovaActivity = new Intent(CriarLista.this, CriarListaMercearia.class);
+                startActivity(NovaActivity);
+            }
+        });
+        botaobricolage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista_bricolage), Toast.LENGTH_SHORT).show();
+                Intent NovaActivity = new Intent(CriarLista.this, CriaListaBricolage.class);
+                startActivity(NovaActivity);
+            }
+        });
+        botaovestuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista_vestuario), Toast.LENGTH_SHORT).show();
+                Intent NovaActivity = new Intent(CriarLista.this, CriaListaVestuario.class);
                 startActivity(NovaActivity);
             }
         });

@@ -44,4 +44,8 @@
     <string name="data">Date</string>
     <string name="lista_apagada">List deleted successfully</string>
     <string name="novo_nome_para_a_lista">New name for the list:</string>
+    <string name="title_activity_cria_lista_bricolage">Criar Lista Bricolage</string>
+    <string name="title_activity_cria_lista_vestuario">Criar Lista Vestuário</string>
+    <string name="carregou_para_criar_lista_bricolage">Carrarregou para criar lista de bricolage</string>
+    <string name="carregou_para_criar_lista_vestuario">Carregou para criar lista de vestuario</string>
 </resources>

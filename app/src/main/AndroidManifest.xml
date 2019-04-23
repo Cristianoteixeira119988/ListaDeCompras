@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".CriaListaVestuario"
+            android:label="@string/title_activity_cria_lista_vestuario"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".CriaListaBricolage"
+            android:label="@string/title_activity_cria_lista_bricolage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ApagarLista"
             android:label="@string/title_activity_apagar_lista"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditarLista"
             android:label="@string/title_activity_editar_lista"
