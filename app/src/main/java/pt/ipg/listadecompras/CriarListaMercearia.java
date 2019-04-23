@@ -65,7 +65,8 @@ public class CriarListaMercearia extends AppCompatActivity {
         botaocancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent paguinainicial = new Intent(CriarListaMercearia.this, MainActivity.class);
+                startActivity(paguinainicial);
             }
         });
 

@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeParaLista2">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/EditTextNomeDalista"
+            android:id="@+id/EditTextNomeDalista2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome" />
