@@ -5,7 +5,7 @@
     <string name="lista_total">" My Lists"</string>
     <string name="title_activity_pagina_add_produto">Add Product Page</string>
     <string name="title_activity_lista_total">My Lists</string>
-    <string name="title_activity_adicionar_produto">Add Product</string>
+    <string name="title_activity_adicionar_produto">All products</string>
     <string name="todas_as_listas">My Lists</string>
     <string name="criar_lista">Create List</string>
     <string name="title_activity_criar_lista">Create List</string>
@@ -48,4 +48,11 @@
     <string name="title_activity_cria_lista_vestuario">Criar Lista Vestuário</string>
     <string name="carregou_para_criar_lista_bricolage">Carrarregou para criar lista de bricolage</string>
     <string name="carregou_para_criar_lista_vestuario">Carregou para criar lista de vestuario</string>
+    <string name="escolher_lista_para_adicionar_produto">Escolher lista para selecionar/inserir produto:</string>
+    <string name="inserir">Inserir</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="data_de_criao">Data de criação:</string>
+    <string name="data_de_cria_o_nova">Data de criação nova:</string>
+    <string name="escolher">Escolher</string>
 </resources>
