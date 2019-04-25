@@ -16,7 +16,6 @@ import java.util.Calendar;
 public class EditarLista extends AppCompatActivity {
 
 
-    private EditText edittextnomemudar;
     private EditText edittextnomenovo;
     private Button botaoguardar;
     private Button botaocancelar;
@@ -36,9 +35,8 @@ public class EditarLista extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        edittextnomemudar = (EditText) findViewById(R.id.EditTextEditListaNome);
         edittextnomenovo = (EditText) findViewById(R.id.EditTextEditListaNomeNovo);
-        botaocancelar = (Button) findViewById(R.id.buttonCancelarEditarLista);
+        botaocancelar = (Button) findViewById(R.id.buttonCancelar);
         botaoguardar = (Button) findViewById(R.id.buttonGuardarEditarLista);
 
         //calendario-----------------------------
@@ -68,19 +66,12 @@ public class EditarLista extends AppCompatActivity {
         botaoguardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mensagem = edittextnomemudar.getText().toString();
                 String mensagem2 = edittextnomenovo.getText().toString();
-                if (mensagem.trim().length() == 0) {
-                    edittextnomemudar.setError(getString(R.string.nome_obrigatorio));
-                } else if (mensagem.length() <= 3) {
-                    edittextnomemudar.setError(getString(R.string.numero_minimo_de_caracters));
-                } else if (mensagem.length() >= 25) {
-                    edittextnomemudar.setError(getString(R.string.numero_maximo_de_caracters));
-                } else if (mensagem.trim().length() == 0) {
+                if (mensagem2.trim().length() == 0) {
                     edittextnomenovo.setError(getString(R.string.nome_obrigatorio));
-                } else if (mensagem.length() <= 3) {
+                } else if (mensagem2.length() <= 3) {
                     edittextnomenovo.setError(getString(R.string.numero_minimo_de_caracters));
-                } else if (mensagem.length() >= 25) {
+                } else if (mensagem2.length() >= 25) {
                     edittextnomenovo.setError(getString(R.string.numero_maximo_de_caracters));
                 } else {
                     finish();

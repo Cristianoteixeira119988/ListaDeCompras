@@ -2,8 +2,6 @@ package pt.ipg.listadecompras;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -17,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button botao;
     private Button botao2;
     private Button botaocriarlista;
+    private Button botaocategorias;
 
 
     @Override
@@ -30,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
         botao=(Button) findViewById(R.id.buttonAddProduto);
         botao2=(Button) findViewById(R.id.buttonListaTotal);
         botaocriarlista=(Button) findViewById(R.id.buttonCriarLista);
+        botaocategorias=(Button) findViewById(R.id.buttonCategorias);
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_adicionar_produto), Toast.LENGTH_SHORT).show();
-                Intent outraActivity = new Intent(MainActivity.this, AdicionarProduto.class);
+                Intent outraActivity = new Intent(MainActivity.this, TodosProduto.class);
                 startActivity(outraActivity);
             }
         });
@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista), Toast.LENGTH_SHORT).show();
                 Intent outraActivity =  new Intent(MainActivity.this, CriarLista.class);
+                startActivity(outraActivity);
+            }
+        });
+        botaocategorias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_ver_todas_as_categorias), Toast.LENGTH_SHORT).show();
+                Intent outraActivity =  new Intent(MainActivity.this, Categorias.class);
                 startActivity(outraActivity);
             }
         });

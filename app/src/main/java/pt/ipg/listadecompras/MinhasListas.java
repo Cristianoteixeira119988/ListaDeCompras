@@ -15,6 +15,7 @@ public class MinhasListas extends AppCompatActivity {
 
     private Button botaoeditarlista;
     private Button botaoapagarlista;
+    private Button botaocriarlistaminhaslistas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class MinhasListas extends AppCompatActivity {
 
         botaoeditarlista = (Button) findViewById(R.id.buttonEditarLista);
         botaoapagarlista = (Button) findViewById(R.id.buttonApagarLista);
+        botaocriarlistaminhaslistas=(Button) findViewById(R.id.buttonCriarlistaML);
 
         botaoapagarlista.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +43,14 @@ public class MinhasListas extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), getString(R.string.carregar_botao_editar_lista), Toast.LENGTH_SHORT).show();
                 Intent outraactivity = new Intent(MinhasListas.this, EditarLista.class);
+                startActivity(outraactivity);
+            }
+        });
+        botaocriarlistaminhaslistas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista), Toast.LENGTH_SHORT).show();
+                Intent outraactivity = new Intent(MinhasListas.this, CriarLista.class);
                 startActivity(outraactivity);
             }
         });

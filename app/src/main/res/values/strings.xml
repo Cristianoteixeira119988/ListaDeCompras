@@ -56,4 +56,8 @@
     <string name="data_de_cria_o_nova">Data de criação nova:</string>
     <string name="escolher">Escolher</string>
     <string name="categorias_de_produtos">Categorias de produtos</string>
+    <string name="title_activity_inserir">Inserir</string>
+    <string name="title_activity_categorias">Categorias</string>
+    <string name="todas_as_categorias">Todas as categorias:</string>
+    <string name="carregou_ver_todas_as_categorias">Carregou para ver todas as categorias de produtos</string>
 </resources>

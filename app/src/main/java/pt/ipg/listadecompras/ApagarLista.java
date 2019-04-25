@@ -21,7 +21,7 @@ public class ApagarLista extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
     eliminarlista = (Button) findViewById(R.id.buttonEliminarLista);
-    cancelarapagamento= (Button) findViewById(R.id.buttonCancelarApagarLista);
+    cancelarapagamento= (Button) findViewById(R.id.buttonCancelar);
 
     eliminarlista.setOnClickListener(new View.OnClickListener() {
         @Override

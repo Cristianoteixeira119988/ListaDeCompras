@@ -27,7 +27,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="16dp"
         android:text="24-04-2019"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textViewNomeParaListaNovo"
         app:layout_constraintTop_toBottomOf="@+id/textViewDataEdit3" />
 
@@ -46,14 +46,26 @@
     <TextView
         android:id="@+id/textViewDataEdit2"
         android:layout_width="320dp"
-        android:layout_height="26dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="16dp"
         android:text="24-04-2019"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textViewListaAEditar"
         app:layout_constraintTop_toBottomOf="@+id/textViewDataEdit" />
+
+    <TextView
+        android:id="@+id/textViewDataEdit5"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Lista1"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewListaAEditar" />
 
     <TextView
         android:id="@+id/textViewDataEdit"
@@ -89,23 +101,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewListaAEditar">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/EditTextEditListaNome"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/nome" />
-    </android.support.design.widget.TextInputLayout>
-
     <TextView
         android:id="@+id/textViewListaAEditar"
         android:layout_width="350dp"
@@ -128,9 +123,10 @@
         android:text="@string/novo_nome_para_a_lista"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDataEdit5" />
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
