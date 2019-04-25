@@ -63,4 +63,8 @@
     <string name="title_activity_inserir_produto">Inserir Produto</string>
     <string name="title_activity_editar_produto">Editar Produto</string>
     <string name="title_activity_eliminar_produto">Eliminar Produto</string>
+    <string name="carregou_para_adicionar_produtoo">Carregou para adicionar um produto</string>
+    <string name="title_activity_escolher_produto_para_editar_eliminar">Escolher Produto</string>
+    <string name="carregou_para_editar_produto">Carregou para editar produto</string>
+    <string name="carregou_para_eliminar_produto">Carregou para eliminar produto</string>
 </resources>
