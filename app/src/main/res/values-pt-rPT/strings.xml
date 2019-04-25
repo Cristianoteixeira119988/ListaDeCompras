@@ -2,11 +2,11 @@
 <resources>
     <string name="app_name">Lista De Compras</string>
     <string name="action_settings">Opções</string>
-    <string name="adicionar_produto">Todos os Produtos</string>
+    <string name="adicionar_produto">Produtos</string>
     <string name="lista_total">Minhas listas</string>
-    <string name="title_activity_pagina_add_produto">Todos os Produtos</string>
+    <string name="title_activity_pagina_add_produto">Produtos</string>
     <string name="title_activity_lista_total">Minhas listas</string>
-    <string name="title_activity_adicionar_produto">Todos os produtos</string>
+    <string name="title_activity_adicionar_produto">Produtos</string>
     <string name="todas_as_listas">Minhas listas</string>
     <string name="criar_lista">Criar Lista</string>
     <string name="title_activity_criar_lista">Criar Lista</string>
@@ -23,7 +23,7 @@
     <string name="caracteres">Contem caracteres especiais</string>
     <string name="lista_criada">Lista Criada</string>
     <string name="carregou_para_criar_lista">Carregou para criar uma nova lista</string>
-    <string name="carregou_para_adicionar_produto">Carregou para adicionar um produto</string>
+    <string name="carregou_para_adicionar_produto">Carregou para ver os produtos</string>
     <string name="carregou_para_ver_lista_compras">Carregou para ver as listas de compras</string>
     <string name="numero_maximo_de_caracters">Excedeu os 25 caracteres</string>
     <string name="numero_minimo_de_caracters">Contem menos de 3 caracteres</string>
