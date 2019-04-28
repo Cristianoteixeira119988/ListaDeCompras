@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,6 +27,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
     private Button botaocancelar;
     private EditText edittextnomeproduto;
     private EditText edittextquantidadeproduto;
+    private TextView texteditdata;
 
 
     //Spinner------------------------------1
@@ -77,6 +79,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
         botaocancelar= (Button) findViewById(R.id.buttonCancelar);
         edittextnomeproduto=(EditText) findViewById(R.id.EditTextNomeDoProduto);
         edittextquantidadeproduto=(EditText) findViewById(R.id.EditTextQuantidade);
+        texteditdata=(TextView) findViewById(R.id.textViewDataSelecionada);
 
 
         botaoinserir.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +115,12 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
                 finish();
             }
         });
+
+        SimpleDateFormat formatadata= new SimpleDateFormat("dd--mm--yyyy");
+        Date data =  new Date();
+        String dataFormatada =  formatadata.format(data);
+
+        texteditdata.setText(dataFormatada);
 
 
 
