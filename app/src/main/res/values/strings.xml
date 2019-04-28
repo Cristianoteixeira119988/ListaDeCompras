@@ -91,4 +91,5 @@
     <string name="categoria_criada">Categoria criada com sucesso!</string>
     <string name="categoria_guardada">Categoria guardada com sucesso!</string>
     <string name="categoria_eliminada_com_sucesso">Categoria eliminada com sucesso!</string>
+    <string name="nome_obrigatorio_geral">Nome obrigatorio!</string>
 </resources>

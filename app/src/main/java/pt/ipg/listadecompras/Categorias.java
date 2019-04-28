@@ -32,6 +32,7 @@ public class Categorias extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(Categorias.this, getString(R.string.carregou_para_inserir_categoria), Toast.LENGTH_SHORT).show();
                 Intent outraactivity= new Intent(Categorias.this, InserirCategoria.class);
+                startActivity(outraactivity);
             }
         });
         editarcategoria.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +40,7 @@ public class Categorias extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(Categorias.this, getString(R.string.carregou_para_editar_categoria), Toast.LENGTH_SHORT).show();
                 Intent outraactivity= new Intent(Categorias.this, EditarCategoria.class);
+                startActivity(outraactivity);
             }
         });
         eliminarcategoria.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +48,7 @@ public class Categorias extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(Categorias.this, getString(R.string.carregou_para_eliminar_categoria), Toast.LENGTH_SHORT).show();
                 Intent outraactivity= new Intent(Categorias.this, EliminarCategoria.class);
+                startActivity(outraactivity);
             }
         });
 

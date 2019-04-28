@@ -86,7 +86,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
                 String texto2= edittextquantidadeproduto.getText().toString();
 
                 if (texto.trim().length() == 0) {
-                    edittextnomeproduto.setError(getString(R.string.nome_obrigatorio));
+                    edittextnomeproduto.setError(getString(R.string.nome_obrigatorio_geral));
                     edittextnomeproduto.requestFocus();
                 } else if (texto.length() <= 3) {
                     edittextnomeproduto.setError(getString(R.string.numero_minimo_de_caracters));

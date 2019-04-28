@@ -34,7 +34,7 @@ public class InserirCategoria extends AppCompatActivity {
 
                 String mensagem = edittextnomedacategoria.getText().toString();
                 if (mensagem.trim().length() == 0){
-                    edittextnomedacategoria.setError(getString(R.string.nome_obrigatorio));
+                    edittextnomedacategoria.setError(getString(R.string.nome_obrigatorio_geral));
                 }else if (mensagem.length() <= 3){
                     edittextnomedacategoria.setError(getString(R.string.numero_minimo_de_caracters));
                 }else if(mensagem.length() >= 25){

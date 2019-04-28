@@ -34,7 +34,7 @@ public class EditarCategoria extends AppCompatActivity {
 
                 String mensagem = edittextnovonomedacategoria.getText().toString();
                 if (mensagem.trim().length() == 0){
-                    edittextnovonomedacategoria.setError(getString(R.string.nome_obrigatorio));
+                    edittextnovonomedacategoria.setError(getString(R.string.nome_obrigatorio_geral));
                 }else if (mensagem.length() <= 3){
                     edittextnovonomedacategoria.setError(getString(R.string.numero_minimo_de_caracters));
                 }else if(mensagem.length() >= 25){

@@ -21,6 +21,9 @@ public class EliminarCategoria extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        botaocancelar=(Button) findViewById(R.id.buttonCancelar);
+        botaoeliminarcategoria=(Button) findViewById(R.id.buttonEliminarCategoria);
+
         botaocancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
