@@ -76,4 +76,5 @@
     <string name="quantidade_obrigatoria">Quantidade obrigatória</string>
     <string name="produto_inserido_com_sucesso">Produto inserido com sucesso</string>
     <string name="quantidade_invalida">Quantidade inválida</string>
+    <string name="produto_eliminado_toast">Produto eliminado com sucesso!</string>
 </resources>
