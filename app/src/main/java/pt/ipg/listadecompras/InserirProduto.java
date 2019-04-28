@@ -27,7 +27,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
     private Button botaocancelar;
     private EditText edittextnomeproduto;
     private EditText edittextquantidadeproduto;
-    private TextView texteditdata;
+    private TextView texteditdata2;
 
 
     //Spinner------------------------------1
@@ -79,7 +79,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
         botaocancelar= (Button) findViewById(R.id.buttonCancelar);
         edittextnomeproduto=(EditText) findViewById(R.id.EditTextNomeDoProduto);
         edittextquantidadeproduto=(EditText) findViewById(R.id.EditTextQuantidade);
-        texteditdata=(TextView) findViewById(R.id.textViewDataSelecionada);
+        texteditdata2=(TextView) findViewById(R.id.textViewDataSelecionada);
 
 
         botaoinserir.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +120,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
         Date data =  new Date();
         String dataFormatada =  formatadata.format(data);
 
-        texteditdata.setText(dataFormatada);
+        texteditdata2.setText(dataFormatada);
 
 
 
