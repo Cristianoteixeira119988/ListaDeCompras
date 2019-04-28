@@ -77,4 +77,8 @@
     <string name="produto_inserido_com_sucesso">Produto inserido com sucesso</string>
     <string name="quantidade_invalida">Quantidade inválida</string>
     <string name="produto_eliminado_toast">Produto eliminado com sucesso!</string>
+    <string name="novo_nome_produto">Novo nome:</string>
+    <string name="nova_categoria">Nova categoria:</string>
+    <string name="nova_quantidade">Nova quantidade:</string>
+    <string name="nova_data">Nova data:</string>
 </resources>
