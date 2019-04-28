@@ -84,4 +84,9 @@
     <string name="title_activity_inserir_categoria">Inserir Categoria</string>
     <string name="title_activity_editar_categoria">EditarCategoria</string>
     <string name="title_activity_eliminar_categoria">Eliminar Categoria</string>
+    <string name="carregou_para_inserir_categoria">Carregou para inserir categoria</string>
+    <string name="carregou_para_editar_categoria">Carregou para editar categoria</string>
+    <string name="carregou_para_eliminar_categoria">Carregou para eliminar categoria</string>
+    <string name="nome_da_categoria">Nome da categoria:</string>
+    <string name="categoria_criada">Categoria criada com sucesso!</string>
 </resources>
