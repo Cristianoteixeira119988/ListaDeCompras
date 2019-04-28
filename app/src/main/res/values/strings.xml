@@ -81,4 +81,7 @@
     <string name="nova_categoria">Nova categoria:</string>
     <string name="nova_quantidade">Nova quantidade:</string>
     <string name="nova_data">Nova data:</string>
+    <string name="title_activity_inserir_categoria">Inserir Categoria</string>
+    <string name="title_activity_editar_categoria">EditarCategoria</string>
+    <string name="title_activity_eliminar_categoria">Eliminar Categoria</string>
 </resources>
