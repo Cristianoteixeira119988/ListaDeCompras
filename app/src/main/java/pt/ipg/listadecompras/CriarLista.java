@@ -34,7 +34,7 @@ public class CriarLista extends AppCompatActivity {
         textviewdata = (TextView) findViewById(R.id.textViewData);
 
 
-        SimpleDateFormat formatadata= new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
         Date data =  new Date();
         String dataFormatada =  formatadata.format(data);
 

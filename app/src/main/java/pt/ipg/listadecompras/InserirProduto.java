@@ -112,7 +112,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
             }
         });
 
-        SimpleDateFormat formatadata= new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
         Date data =  new Date();
         String dataFormatada =  formatadata.format(data);
         txtViewVerData.setText(dataFormatada);
