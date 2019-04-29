@@ -38,7 +38,7 @@ public class TodosProduto extends AppCompatActivity {
         botaoeditarproduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent outraactivity= new Intent(TodosProduto.this,EditarProduto.class);
+                Intent outraactivity= new Intent(TodosProduto.this,EditarProduto2.class);
                 startActivity(outraactivity);
                 Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_editar_produto), Toast.LENGTH_SHORT).show();
             }

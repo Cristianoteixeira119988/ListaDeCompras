@@ -92,4 +92,5 @@
     <string name="categoria_guardada">Categoria guardada com sucesso!</string>
     <string name="categoria_eliminada_com_sucesso">Categoria eliminada com sucesso!</string>
     <string name="nome_obrigatorio_geral">Nome obrigatorio!</string>
+    <string name="title_activity_editar_produto2">"Editar Produto "</string>
 </resources>

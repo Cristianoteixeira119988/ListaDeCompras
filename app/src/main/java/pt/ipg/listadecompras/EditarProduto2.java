@@ -2,6 +2,8 @@ package pt.ipg.listadecompras;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,45 +15,40 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.text.SimpleDateFormat;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class InserirProduto extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
+public class EditarProduto2 extends AppCompatActivity  implements AdapterView.OnItemSelectedListener{
 
-    private Button botaoinserir;
+    private Button botaoguardarproduto;
     private Button botaocancelar;
-    private EditText edittextnomeproduto;
-    private EditText edittextquantidadeproduto;
-
-
-    //Spinner------------------------------1
-    private Spinner spinnercategorias;
-    //-------------------------------------1
-    //calendario-------------------------------------3
     private TextView txtViewVerData;
     private Button botaoescolherdata;
     Calendar calendario;
     DatePickerDialog datapiker;
-    //-----------------------------------------------3
+    private Spinner spinnercategorias;
+    private EditText edittextnomeproduto;
+    private EditText edittextquantidadeproduto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inserir_produto);
+        setContentView(R.layout.activity_editar_produto2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Spinner--------------------------------------------------------2
-        spinnercategorias = (Spinner) findViewById(R.id.spinnerCategoria);
+        spinnercategorias = (Spinner) findViewById(R.id.spinnerCategoria3);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Categorias, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnercategorias.setAdapter(adapter);
         spinnercategorias.setOnItemSelectedListener(this);
         //calendario-----------------------------4
-        txtViewVerData= (TextView) findViewById(R.id.textViewDataSelecionada);
-        botaoescolherdata=(Button) findViewById(R.id.buttonEscolherDataQueFaltou);
+        txtViewVerData= (TextView) findViewById(R.id.textViewDataSelecionada2);
+        botaoescolherdata=(Button) findViewById(R.id.buttonEscolherDataQueFaltou2);
         botaoescolherdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +57,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
                 int mes= calendario.get(Calendar.MONTH);
                 int ano = calendario.get(Calendar.YEAR);
 
-                datapiker = new DatePickerDialog(InserirProduto.this, new DatePickerDialog.OnDateSetListener() {
+                datapiker = new DatePickerDialog(EditarProduto2.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int mAno, int mMes, int mDia) {
                         txtViewVerData.setText(mDia + "-" + (mMes+1) + "-"+ mAno);
@@ -70,15 +67,13 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
             }
         });
         //-----------------------------------------4
-
-        botaoinserir =(Button) findViewById(R.id.buttonInserirProdutoFinal);
+        botaoguardarproduto =(Button) findViewById(R.id.buttonGuardarProduto);
         botaocancelar= (Button) findViewById(R.id.buttonCancelar);
-        edittextnomeproduto=(EditText) findViewById(R.id.EditTextNomeDoProduto);
-        edittextquantidadeproduto=(EditText) findViewById(R.id.EditTextQuantidade);
+        edittextnomeproduto=(EditText) findViewById(R.id.EditTextNovonomeproduto);
+        edittextquantidadeproduto=(EditText) findViewById(R.id.EditTextQuantidadeNova);
 
 
-
-        botaoinserir.setOnClickListener(new View.OnClickListener() {
+        botaoguardarproduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String texto = edittextnomeproduto.getText().toString();
@@ -101,7 +96,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
                     edittextquantidadeproduto.requestFocus();
                 } else {
                     finish();
-                    Toast.makeText(InserirProduto.this, getString(R.string.produto_inserido_com_sucesso), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarProduto2.this, getString(R.string.produto_inserido_com_sucesso), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -115,6 +110,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
         SimpleDateFormat formatadata= new SimpleDateFormat("dd-mm-yyyy");
         Date data =  new Date();
         String dataFormatada =  formatadata.format(data);
+
         txtViewVerData.setText(dataFormatada);
 
 
@@ -132,4 +128,9 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
 
     }
     //--------------------------------------------------------------------2
+
+
+
 }
+
+

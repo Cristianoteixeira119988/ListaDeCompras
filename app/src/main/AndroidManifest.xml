@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".EditarProduto2"
+            android:label="@string/title_activity_editar_produto2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".EliminarCategoria"
             android:label="@string/title_activity_eliminar_categoria"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditarCategoria"
             android:label="@string/title_activity_editar_categoria"
