@@ -1,5 +1,8 @@
 package pt.ipg.listadecompras;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+
 import java.util.Date;
 
 public class Produtos {
@@ -49,4 +52,40 @@ public class Produtos {
     }
 
     private Date dataqueacabou;
+
+    public ContentValues getContentValues() {
+        ContentValues valores = new ContentValues();
+
+        valores.put(BdTableProdutos.CAMPO_NOME_PRODUTO, nomeproduto);
+        valores.put(BdTableProdutos.CAMPO_QUANTIDADE, quantidade);
+        valores.put(BdTableProdutos.CAMPO_CATEGORIA, categoria);
+
+        return valores;
+    }
+    public static Produtos fromCursor(Cursor cursor) {
+        long id = cursor.getLong(
+                cursor.getColumnIndex(BdTableProdutos._ID)
+        );
+
+        String nomeproduto = cursor.getString(
+                cursor.getColumnIndex(BdTableProdutos.CAMPO_NOME_PRODUTO)
+        );
+
+        int quantidade = cursor.getInt(
+                cursor.getColumnIndex(BdTableProdutos.CAMPO_QUANTIDADE)
+        );
+
+        String categoria = cursor.getString(
+                cursor.getColumnIndex(BdTableProdutos.CAMPO_CATEGORIA)
+        );
+
+        Produtos produtos = new Produtos();
+
+        produtos.setId(id);
+        produtos.setNomeproduto(nomeproduto);
+        produtos.setQuantidade(quantidade);
+        produtos.setCategoria(categoria);
+
+        return produtos;
+    }
 }
