@@ -1,5 +1,8 @@
 package pt.ipg.listadecompras;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+
 import java.util.Date;
 
 public class Listas {
@@ -21,14 +24,49 @@ public class Listas {
         this.nomelista = nomelista;
     }
 
-    public Date getDatacriacao() {
+    public String getDatacriacao() {
         return datacriacao;
     }
 
-    public void setDatacriacao(Date datacriacao) {
+    public void setDatacriacao(String datacriacao) {
         this.datacriacao = datacriacao;
     }
 
     private String nomelista;
-    private Date datacriacao;
+    private String datacriacao;
+
+    public ContentValues getContentValues() {
+        ContentValues valores = new ContentValues();
+
+        valores.put(BdTableListas.CAMPO_NOME_LISTA, nomelista);
+        valores.put(BdTableListas.CAMPO_DATA_CRIACAO, datacriacao);
+
+
+        return valores;
+    }
+
+    public static Listas fromCursor(Cursor cursor) {
+        long id = cursor.getLong(
+                cursor.getColumnIndex(BdTableListas._ID)
+        );
+
+        String nomelista = cursor.getString(
+                cursor.getColumnIndex(BdTableListas.CAMPO_NOME_LISTA)
+        );
+
+        String datacriacao = cursor.getString(
+                cursor.getColumnIndex(BdTableListas.CAMPO_DATA_CRIACAO)
+        );
+
+
+
+        Listas listas = new Listas();
+
+        listas.setId(id);
+        listas.setNomelista(nomelista);
+        listas.setDatacriacao(datacriacao);
+
+
+        return listas;
+    }
 }

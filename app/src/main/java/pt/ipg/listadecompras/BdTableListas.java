@@ -10,8 +10,8 @@ import java.util.Date;
 
 public class BdTableListas implements BaseColumns {
     public static final String NOME_TABELA = "Listas";
-    public static final String CAMPO_NOME_LISTA = "Nome da lista";
-    public static final String CAMPO_DATA_CRIACAO = "Data de criação";
+    public static final String CAMPO_NOME_LISTA = "Nomedalista";
+    public static final String CAMPO_DATA_CRIACAO = "Datadecriação";
     private SQLiteDatabase db;
 
     public BdTableListas(SQLiteDatabase db) {
