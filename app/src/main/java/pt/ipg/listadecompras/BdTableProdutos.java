@@ -25,6 +25,7 @@ public class BdTableProdutos implements BaseColumns {
                         CAMPO_NOME_PRODUTO + " TEXT NOT NULL," +
                         CAMPO_QUANTIDADE + " INTEGER NOT NULL," +
                         CAMPO_CATEGORIA + " INTEGER NOT NULL," +
+                        CAMPO_DATA_FALTOU + " DATE NOT NULL," +
                         "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategoria.NOME_TABELA + "(" + BdTableCategoria._ID + ")" +
                         ")"
         );

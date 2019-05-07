@@ -23,7 +23,7 @@ public class BdTableListas implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_NOME_LISTA + " TEXT NOT NULL," +
-                        CAMPO_DATA_CRIACAO + " TEXT NOT NULL," +
+                        CAMPO_DATA_CRIACAO + " DATE NOT NULL," +
                         ")"
         );
     }
