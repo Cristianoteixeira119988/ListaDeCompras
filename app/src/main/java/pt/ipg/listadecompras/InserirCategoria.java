@@ -32,12 +32,12 @@ public class InserirCategoria extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String mensagem = edittextnomedacategoria.getText().toString();
-                if (mensagem.trim().length() == 0){
+                String nomecategoria = edittextnomedacategoria.getText().toString();
+                if (nomecategoria.trim().length() == 0){
                     edittextnomedacategoria.setError(getString(R.string.nome_obrigatorio_geral));
-                }else if (mensagem.length() <= 3){
+                }else if (nomecategoria.length() <= 3){
                     edittextnomedacategoria.setError(getString(R.string.numero_minimo_de_caracters));
-                }else if(mensagem.length() >= 25){
+                }else if(nomecategoria.length() >= 25){
                     edittextnomedacategoria.setError(getString(R.string.numero_maximo_de_caracters));
                 }else {
                     Toast.makeText(InserirCategoria.this, getString(R.string.categoria_criada), Toast.LENGTH_SHORT).show();

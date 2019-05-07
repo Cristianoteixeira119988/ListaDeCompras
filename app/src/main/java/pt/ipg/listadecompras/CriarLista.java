@@ -44,12 +44,12 @@ public class CriarLista extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String mensagem = TextEditNomelista.getText().toString();
-                if (mensagem.trim().length() == 0){
+                String nomelista = TextEditNomelista.getText().toString();
+                if (nomelista.trim().length() == 0){
                     TextEditNomelista.setError(getString(R.string.nome_obrigatorio));
-                }else if (mensagem.length() <= 3){
+                }else if (nomelista.length() <= 3){
                     TextEditNomelista.setError(getString(R.string.numero_minimo_de_caracters));
-                }else if(mensagem.length() >= 25){
+                }else if(nomelista.length() >= 25){
                     TextEditNomelista.setError(getString(R.string.numero_maximo_de_caracters));
                 }else {
                         Toast.makeText(CriarLista.this, getString(R.string.lista_criada), Toast.LENGTH_SHORT).show();

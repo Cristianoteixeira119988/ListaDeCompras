@@ -66,12 +66,12 @@ public class EditarLista extends AppCompatActivity {
         botaoguardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mensagem2 = edittextnomenovo.getText().toString();
-                if (mensagem2.trim().length() == 0) {
+                String nomenovo = edittextnomenovo.getText().toString();
+                if (nomenovo.trim().length() == 0) {
                     edittextnomenovo.setError(getString(R.string.nome_obrigatorio));
-                } else if (mensagem2.length() <= 3) {
+                } else if (nomenovo.length() <= 3) {
                     edittextnomenovo.setError(getString(R.string.numero_minimo_de_caracters));
-                } else if (mensagem2.length() >= 25) {
+                } else if (nomenovo.length() >= 25) {
                     edittextnomenovo.setError(getString(R.string.numero_maximo_de_caracters));
                 } else {
                     finish();

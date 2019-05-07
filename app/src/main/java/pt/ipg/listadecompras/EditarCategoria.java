@@ -32,12 +32,12 @@ public class EditarCategoria extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String mensagem = edittextnovonomedacategoria.getText().toString();
-                if (mensagem.trim().length() == 0){
+                String novonomecategoria = edittextnovonomedacategoria.getText().toString();
+                if (novonomecategoria.trim().length() == 0){
                     edittextnovonomedacategoria.setError(getString(R.string.nome_obrigatorio_geral));
-                }else if (mensagem.length() <= 3){
+                }else if (novonomecategoria.length() <= 3){
                     edittextnovonomedacategoria.setError(getString(R.string.numero_minimo_de_caracters));
-                }else if(mensagem.length() >= 25){
+                }else if(novonomecategoria.length() >= 25){
                     edittextnovonomedacategoria.setError(getString(R.string.numero_maximo_de_caracters));
                 }else {
                     Toast.makeText(EditarCategoria.this, getString(R.string.categoria_guardada), Toast.LENGTH_SHORT).show();

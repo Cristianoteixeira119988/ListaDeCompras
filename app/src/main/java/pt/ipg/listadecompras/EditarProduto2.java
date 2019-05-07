@@ -76,22 +76,23 @@ public class EditarProduto2 extends AppCompatActivity  implements AdapterView.On
         botaoguardarproduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String texto = edittextnomeproduto.getText().toString();
-                String texto2= edittextquantidadeproduto.getText().toString();
+                String nomeproduto= edittextnomeproduto.getText().toString();
+                String quantidade= edittextquantidadeproduto.getText().toString();
 
-                if (texto.trim().length() == 0) {
+
+                if (nomeproduto.trim().length() == 0) {
                     edittextnomeproduto.setError(getString(R.string.nome_obrigatorio_geral));
                     edittextnomeproduto.requestFocus();
-                } else if (texto.length() <= 3) {
+                } else if (nomeproduto.length() <= 3) {
                     edittextnomeproduto.setError(getString(R.string.numero_minimo_de_caracters));
                     edittextnomeproduto.requestFocus();
-                } else if (texto.length() >= 25) {
+                } else if (nomeproduto.length() >= 25) {
                     edittextnomeproduto.setError(getString(R.string.numero_maximo_de_caracters));
                     edittextnomeproduto.requestFocus();
-                } else if (texto2.trim().length() == 0) {
+                } else if (quantidade.trim().length() == 0) {
                     edittextquantidadeproduto.setError(getString(R.string.quantidade_obrigatoria));
                     edittextquantidadeproduto.requestFocus();
-                }else if (texto2.matches("0")) {
+                }else if (quantidade.matches("0")){
                     edittextquantidadeproduto.setError(getString(R.string.quantidade_invalida));
                     edittextquantidadeproduto.requestFocus();
                 } else {

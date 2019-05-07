@@ -21,14 +21,14 @@
 
     <TextView
         android:id="@+id/txtData"
-        android:layout_width="157dp"
+        android:layout_width="224dp"
         android:layout_height="39dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="24-04-2019"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewNomeParaListaNovo"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEscolherData"
         app:layout_constraintTop_toBottomOf="@+id/textViewDataEdit3" />
 
     <TextView
@@ -45,14 +45,14 @@
 
     <TextView
         android:id="@+id/textViewDataEdit2"
-        android:layout_width="320dp"
+        android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="24-04-2019"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewListaAEditar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDataEdit" />
 
     <TextView
@@ -91,7 +91,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonCancelarEditarLista"
+        android:id="@+id/buttonCancelar"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginEnd="16dp"
@@ -126,7 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewDataEdit5" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayout3"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
