@@ -10,6 +10,7 @@ public class Produtos {
     private String nomeproduto;
     private String categoria;
     private int quantidade;
+    private String dataqueacabou;
 
     public long getId() {
         return id;
@@ -43,15 +44,15 @@ public class Produtos {
         this.quantidade = quantidade;
     }
 
-    public Date getDataqueacabou() {
+    public String getDataqueacabou() {
         return dataqueacabou;
     }
 
-    public void setDataqueacabou(Date dataqueacabou) {
+    public void setDataqueacabou (String dataqueacabou) {
         this.dataqueacabou = dataqueacabou;
     }
 
-    private Date dataqueacabou;
+
 
     public ContentValues getContentValues() {
         ContentValues valores = new ContentValues();
@@ -59,7 +60,7 @@ public class Produtos {
         valores.put(BdTableProdutos.CAMPO_NOME_PRODUTO, nomeproduto);
         valores.put(BdTableProdutos.CAMPO_QUANTIDADE, quantidade);
         valores.put(BdTableProdutos.CAMPO_CATEGORIA, categoria);
-
+        valores.put(BdTableProdutos.CAMPO_DATA_FALTOU,  dataqueacabou);
         return valores;
     }
     public static Produtos fromCursor(Cursor cursor) {
@@ -78,6 +79,9 @@ public class Produtos {
         String categoria = cursor.getString(
                 cursor.getColumnIndex(BdTableProdutos.CAMPO_CATEGORIA)
         );
+        String dataquefaltou = cursor.getString(
+                cursor.getColumnIndex(BdTableProdutos.CAMPO_DATA_FALTOU)
+        );
 
         Produtos produtos = new Produtos();
 
@@ -85,6 +89,7 @@ public class Produtos {
         produtos.setNomeproduto(nomeproduto);
         produtos.setQuantidade(quantidade);
         produtos.setCategoria(categoria);
+        produtos.setDataqueacabou(dataquefaltou);
 
         return produtos;
     }

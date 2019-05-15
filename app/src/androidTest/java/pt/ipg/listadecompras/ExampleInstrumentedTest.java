@@ -1,6 +1,7 @@
 package pt.ipg.listadecompras;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
@@ -25,7 +26,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void criaBdLivros() {
-        // Context of the app under test.
         Context appContext = getAppContext();
 
         SqliteOpenHelper openHelper = new SqliteOpenHelper(appContext);
@@ -44,16 +44,38 @@ public class ExampleInstrumentedTest {
         SqliteOpenHelper openHelper = new SqliteOpenHelper(getAppContext());
         SQLiteDatabase db = openHelper.getWritableDatabase();
 
-        BdTableCategoria tabelaCategorias = new BdTableCategoria(db);
+
+
+        //TESTE CATEGORIAS
+
+        BdTableCategoria tableCategorias = new BdTableCategoria(db);
 
         Categoria categoria = new Categoria();
-        categoria.setNomecategoria("Mercearia");
-        long idMercearia = tabelaCategorias.insert(categoria.getContentValues());
-        assertNotEquals(-1, idMercearia);
-
-        categoria = new Categoria();
         categoria.setNomecategoria("Bricolage");
-        long idBricolage = tabelaCategorias.insert(categoria.getContentValues());
-        assertNotEquals(-1, idBricolage);
+        long idCategoria = tableCategorias.insert(categoria.getContentValues());
+        assertNotEquals(-1, idCategoria);
+
+        //TESTE SÉRIES
+
+        BdTableProdutos tableProdutos = new BdTableProdutos(db);
+
+        Produtos produtos = new Produtos();
+        produtos.setNomeproduto("Arroz");
+        produtos.setCategoria("Mercearia");
+        produtos.setQuantidade(5);
+        produtos.setDataqueacabou("13-05-2019");
+        long idProdutos = tableProdutos.insert(produtos.getContentValues());
+        assertNotEquals(-1, idProdutos);
+
+        //TESTE LISTAS
+
+        BdTableListas tabelaListas = new BdTableListas(db);
+
+        Listas listas = new Listas();
+        listas.setNomelista("Lista1");
+        listas.setDatacriacao("13-05-2019");
+        long idLista = tabelaListas.insert(listas.getContentValues());
+        assertNotEquals(-1, idLista);
+
     }
 }
