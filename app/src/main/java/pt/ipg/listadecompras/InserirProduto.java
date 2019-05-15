@@ -83,6 +83,8 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
             public void onClick(View v) {
                 String nomeproduto = edittextnomeproduto.getText().toString();
                 String quantidade= edittextquantidadeproduto.getText().toString();
+                int numeroqt;
+                numeroqt= Integer.parseInt(quantidade);
 
                 if (nomeproduto.trim().length() == 0) {
                     edittextnomeproduto.setError(getString(R.string.nome_obrigatorio_geral));
@@ -96,7 +98,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
                 } else if (quantidade.trim().length() == 0) {
                     edittextquantidadeproduto.setError(getString(R.string.quantidade_obrigatoria));
                     edittextquantidadeproduto.requestFocus();
-                }else if (quantidade.matches("0")) {
+                }else if (numeroqt<=0) {
                     edittextquantidadeproduto.setError(getString(R.string.quantidade_invalida));
                     edittextquantidadeproduto.requestFocus();
                 } else {

@@ -55,7 +55,7 @@ public class ExampleInstrumentedTest {
         long idCategoria = tableCategorias.insert(categoria.getContentValues());
         assertNotEquals(-1, idCategoria);
 
-        //TESTE SÉRIES
+        //TESTE PRODUTOS
 
         BdTableProdutos tableProdutos = new BdTableProdutos(db);
 
@@ -64,6 +64,7 @@ public class ExampleInstrumentedTest {
         produtos.setCategoria("Mercearia");
         produtos.setQuantidade(5);
         produtos.setDataqueacabou("13-05-2019");
+        produtos.setNomelista("Lista1");
         long idProdutos = tableProdutos.insert(produtos.getContentValues());
         assertNotEquals(-1, idProdutos);
 

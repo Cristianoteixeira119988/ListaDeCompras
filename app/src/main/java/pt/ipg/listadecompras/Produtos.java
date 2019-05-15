@@ -11,6 +11,15 @@ public class Produtos {
     private String categoria;
     private int quantidade;
     private String dataqueacabou;
+    private String nomelista;
+
+    public String getNomelista() {
+        return nomelista;
+    }
+
+    public void setNomelista(String nomelista) {
+        this.nomelista= nomelista;
+    }
 
     public long getId() {
         return id;
@@ -61,6 +70,7 @@ public class Produtos {
         valores.put(BdTableProdutos.CAMPO_QUANTIDADE, quantidade);
         valores.put(BdTableProdutos.CAMPO_CATEGORIA, categoria);
         valores.put(BdTableProdutos.CAMPO_DATA_FALTOU,  dataqueacabou);
+        valores.put(BdTableProdutos.CAMPO_NOME_LISTA,  nomelista);
         return valores;
     }
     public static Produtos fromCursor(Cursor cursor) {
@@ -82,6 +92,9 @@ public class Produtos {
         String dataquefaltou = cursor.getString(
                 cursor.getColumnIndex(BdTableProdutos.CAMPO_DATA_FALTOU)
         );
+        String nomelista= cursor.getString(
+                cursor.getColumnIndex(BdTableProdutos.CAMPO_NOME_LISTA)
+        );
 
         Produtos produtos = new Produtos();
 
@@ -90,6 +103,7 @@ public class Produtos {
         produtos.setQuantidade(quantidade);
         produtos.setCategoria(categoria);
         produtos.setDataqueacabou(dataquefaltou);
+        produtos.setNomelista(nomelista);
 
         return produtos;
     }
