@@ -6,8 +6,10 @@ quantidade e a data em que o produto ficou em falta para assim o utilizador sabe
 
 Listas: id_lista, nome_lista, data_criacao
 
-Produtos: id_produto, nome_produto, categoria, quantidade, data_que_acabou
+Produtos: id_produto, nome_produto, categoria, quantidade, data_que_acabou, nome_lista_adicionar
 
-Categorias: id_categoria, categoria
+Categorias: id_categoria, nome_categoria
+
+
 
 
