@@ -25,7 +25,7 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void criaBdLivros() {
+    public void criaBdListas() {
         Context appContext = getAppContext();
 
         SqliteOpenHelper openHelper = new SqliteOpenHelper(appContext);

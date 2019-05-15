@@ -11,7 +11,7 @@ public class BdTableProdutos implements BaseColumns {
     public static final String CAMPO_NOME_PRODUTO = "NomeProduto";
     public static final String CAMPO_QUANTIDADE = "Quantidade";
     public static final String CAMPO_CATEGORIA = "Categoria";
-    public static final String CAMPO_DATA_FALTOU = "Data que faltou";
+    public static final String CAMPO_DATA_FALTOU = "Data";
     public static final String CAMPO_NOME_LISTA = "Lista";
     private SQLiteDatabase db;
 
@@ -24,9 +24,9 @@ public class BdTableProdutos implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_NOME_PRODUTO + " TEXT NOT NULL," +
+                        CAMPO_CATEGORIA + " TEXT NOT NULL," +
                         CAMPO_QUANTIDADE + " INTEGER NOT NULL," +
-                        CAMPO_CATEGORIA + " TEXT NOT NULL, " +
-                        CAMPO_DATA_FALTOU + "TEXT NOT NULL," +
+                        CAMPO_DATA_FALTOU + " DATE NOT NULL," +
                         CAMPO_NOME_LISTA + " TEXT NOT NULL," +
                         "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategoria.NOME_TABELA + "(" + BdTableCategoria._ID + ")" +
                         ")"
