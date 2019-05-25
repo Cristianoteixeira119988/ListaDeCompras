@@ -41,42 +41,323 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testCRUD() {
-        SqliteOpenHelper openHelper = new SqliteOpenHelper(getAppContext());
-        SQLiteDatabase db = openHelper.getWritableDatabase();
 
+        //Teste categorias
 
+        SqliteOpenHelper openHelper1 = new SqliteOpenHelper(getAppContext());
+        SQLiteDatabase db = openHelper1.getWritableDatabase();
 
-        //TESTE CATEGORIAS
+        BdTableCategorias tabelaCategorias = new BdTableCategorias(db);
 
-        BdTableCategoria tableCategorias = new BdTableCategoria(db);
+        // Teste read categorias (cRud)
+        Cursor cursorCategorias = getCategorias(tabelaCategorias);
+        assertEquals(0, cursorCategorias.getCount());
 
-        Categoria categoria = new Categoria();
-        categoria.setNomecategoria("Bricolage");
-        long idCategoria = tableCategorias.insert(categoria.getContentValues());
-        assertNotEquals(-1, idCategoria);
+        // Teste create/read categorias (CRud)
+        String nome = "Mercearia";
+        long idMercearia = criaCategoria(tabelaCategorias, nome);
 
-        //TESTE PRODUTOS
+        cursorCategorias = getCategorias(tabelaCategorias);
+        assertEquals(1, cursorCategorias.getCount());
 
-        BdTableProdutos tableProdutos = new BdTableProdutos(db);
+        Categoria categoria = getCategoriaComID(cursorCategorias, idMercearia);
 
-        Produtos produtos = new Produtos();
-        produtos.setNomeproduto("Arroz");
-        produtos.setCategoria("Mercearia");
-        produtos.setQuantidade(5);
-        produtos.setDataqueacabou("13-05-2019");
-        produtos.setNomelista("Lista1");
-        long idProdutos = tableProdutos.insert(produtos.getContentValues());
-        assertNotEquals(-1, idProdutos);
+        assertEquals(nome, categoria.getDescricao());
 
-        //TESTE LISTAS
+        nome = "Bricolage";
+        long idBricolage = criaCategoria(tabelaCategorias, nome);
+
+        cursorCategorias = getCategorias(tabelaCategorias);
+        assertEquals(2, cursorCategorias.getCount());
+
+        categoria = getCategoriaComID(cursorCategorias, idBricolage);
+
+        assertEquals(nome, categoria.getDescricao());
+
+        // Teste Update/Read categorias (cRUd)
+        nome = "Vestuario / Bricolage";
+        categoria.setDescricao(nome);
+
+        int registosAlterados = tabelaCategorias.update(categoria.getContentValues(), BdTableCategorias._ID + "=?", new String[]{String.valueOf(idBricolage)});
+
+        assertEquals(1, registosAlterados);
+
+        cursorCategorias = getCategorias(tabelaCategorias);
+        categoria = getCategoriaComID(cursorCategorias, idBricolage);
+
+        assertEquals(nome, categoria.getDescricao());
+
+        // Teste Create/Delete/Read categorias (CRuD)
+        long id = criaCategoria(tabelaCategorias, "TESTE");
+        cursorCategorias = getCategorias(tabelaCategorias);
+        assertEquals(3, cursorCategorias.getCount());
+
+        tabelaCategorias.delete(BdTableCategorias._ID + "=?", new String[]{String.valueOf(id)});
+        cursorCategorias = getCategorias(tabelaCategorias);
+        assertEquals(2, cursorCategorias.getCount());
+
+        getCategoriaComID(cursorCategorias, idMercearia);
+        getCategoriaComID(cursorCategorias, idBricolage);
 
         BdTableListas tabelaListas = new BdTableListas(db);
 
-        Listas listas = new Listas();
-        listas.setNomelista("Lista1");
-        listas.setDatacriacao("13-05-2019");
-        long idLista = tabelaListas.insert(listas.getContentValues());
-        assertNotEquals(-1, idLista);
+        //Teste produtos
+
+        BdTableProdutos tableProdutos = new BdTableProdutos(db);
+
+        Cursor cursorProdutos = getProduto(tableProdutos);
+        assertEquals(0, cursorProdutos.getCount());
+
+        // Teste create / read produtos (cRud)
+
+        String nomeproduto ="Massa";
+        int categoriaa = 1;
+        String data = "12/05/2019";
+        int quantidade = 1;
+        String nomedalista ="Lista2";
+        long idITS = criaProduto(tableProdutos, nomeproduto,categoriaa, quantidade, data, nomedalista);
+
+        cursorProdutos = getProduto(tableProdutos);
+        assertEquals(1, cursorProdutos.getCount());
+
+        Produtos produtos = getProdutoComID(cursorProdutos, idITS);
+
+        assertEquals(nomeproduto, produtos.getNomeproduto());
+        assertEquals(categoriaa, produtos.getCategoria());
+        assertEquals(data, produtos.getDataqueacabou());
+        assertEquals(quantidade,produtos.getQuantidade());
+        assertEquals(nomedalista,produtos.getNomelista());
+
+        nomeproduto ="Batatas";
+        categoriaa = 4;
+        quantidade= 8;
+        data = "15/05/2019";
+        nomedalista= "lista3";
+        long idJW = criaProduto(tableProdutos, nomeproduto,categoriaa, quantidade, data, nomedalista);
+
+        cursorProdutos = getProduto(tableProdutos);
+        assertEquals(2, cursorProdutos.getCount());
+
+        produtos = getProdutoComID(cursorProdutos, idJW);
+
+        assertEquals(nomeproduto, produtos.getNomeproduto());
+        assertEquals(categoriaa, produtos.getCategoria());
+        assertEquals(data, produtos.getDataqueacabou());
+        assertEquals(quantidade,produtos.getQuantidade());
+        assertEquals(nomedalista,produtos.getNomelista());
+
+        //Update produtos
+
+        nomeproduto ="cenouras";
+        categoriaa = 2;
+        quantidade= 4;
+        data = "18/05/2019";
+        nomedalista= "lista4";
+
+        produtos.setNomeproduto(nomeproduto);
+        produtos.setCategoria(categoriaa);
+        produtos.setQuantidade(quantidade);
+        produtos.setDataqueacabou(data);
+        produtos.setNomelista(nomedalista);
+
+        int registosAlteradosProdutos = tableProdutos.update(produtos.getContentValues(), BdTableProdutos._ID + "=?", new String[]{String.valueOf(idITS)});
+
+        assertEquals(1, registosAlteradosProdutos);
+
+        cursorProdutos = getProduto(tableProdutos);
+        produtos = getProdutoComID(cursorProdutos, idITS);
+
+        assertEquals(nomeproduto, produtos.getNomeproduto());
+        assertEquals(categoriaa, produtos.getCategoria());
+        assertEquals(data, produtos.getDataqueacabou());
+        assertEquals(quantidade,produtos.getQuantidade());
+        assertEquals(nomedalista,produtos.getNomelista());
+
+        //Crud produtos
+
+        id = criaProduto(tableProdutos, "Pão", 3, 5, "13-04-2019", "Lista6");
+        cursorProdutos = getProduto(tableProdutos);
+        assertEquals(3, cursorProdutos.getCount());
+
+        tableProdutos.delete(BdTableProdutos._ID + "=?", new String[]{String.valueOf(id)});
+        cursorProdutos = getProduto(tableProdutos);
+        assertEquals(2, cursorProdutos.getCount());
+
+        getProdutoComID(cursorProdutos, idITS);
+        getProdutoComID(cursorProdutos, idJW);
+
+        //Teste listas
+
+        BdTableListas tableListas = new BdTableListas(db);
+
+        Cursor cursorListas = getListas(tableListas);
+        assertEquals(0, cursorListas.getCount());
+
+        //Teste create / read listas
+
+        nome= "Lista8";
+        data="19-05-2019";
+        long idTC = criaLista(tableListas, nome, data);
+
+        cursorListas = getListas(tableListas);
+        assertEquals(1, cursorListas.getCount());
+
+        Listas listas = getListaComID(cursorListas, idTC);
+
+        assertEquals(nome, listas.getNomelista());
+        assertEquals(data, listas.getDatacriacao());
+
+        nome= "Lista9";
+        data="01-05-2019";
+        long idGOT = criaLista(tableListas, nome, data);
+
+        cursorListas = getListas(tableListas);
+        assertEquals(2, cursorListas.getCount());
+
+        listas = getListaComID(cursorListas, idGOT);
+
+        assertEquals(nome, listas.getNomelista());
+        assertEquals(data, listas.getDatacriacao());
+
+        //Update listas
+
+        nome = "Lista10";
+        data = "02-05-2019";
+
+        listas.setNomelista(nome);
+        listas.setDatacriacao(data);
+
+        int registosAlteradosListas = tableListas.update(listas.getContentValues(), BdTableListas._ID + "=?", new String[]{String.valueOf(idITS)});
+
+        cursorListas = getListas(tableListas);
+        listas = getListaComID(cursorListas, idITS);
+
+        assertEquals(nome, listas.getNomelista());
+        assertEquals(data, listas.getDatacriacao());
+
+
+        //Crud listas
+
+        id = criaLista(tableListas,"Lista11", "03-05-2019");
+        cursorListas = getListas(tableListas);
+        assertEquals(3, cursorListas.getCount());
+
+        tableListas.delete(BdTableListas._ID + "=?", new String[]{String.valueOf(id)});
+        cursorListas = getListas(tableListas);
+        assertEquals(2, cursorListas.getCount());
+
+        getListaComID(cursorListas, idTC);
+        getListaComID(cursorListas, idGOT);
+
+
+
 
     }
+    //Tabela listas
+
+    private long criaLista(BdTableListas tableListas, String nome,  String data) {
+
+        Listas listas = new Listas();
+
+        listas.setNomelista(nome);
+        listas.setDatacriacao(data);
+
+
+        long id = tableListas.insert(listas.getContentValues());
+        assertNotEquals(-1, id);
+
+        return id;
+    }
+
+    private Cursor getListas(BdTableListas tableListas) {
+        return tableListas.query(BdTableListas.TODAS_COLUNAS, null, null, null, null, null);
+    }
+
+    private Listas getListaComID(Cursor cursor, long id) {
+        Listas listas = null;
+
+        while (cursor.moveToNext()) {
+            listas= Listas.fromCursor(cursor);
+
+            if (listas.getId() == id) {
+                break;
+            }
+        }
+
+        assertNotNull(listas);
+
+        return listas;
+    }
+
+    //tabela produtos
+
+    private long criaProduto(BdTableProdutos tableProdutos, String nome, int categoriaa, int quantidade, String data, String nomedalista) {
+
+        Produtos produtos = new Produtos();
+
+        produtos.setNomeproduto(nome);
+        produtos.setCategoria(categoriaa);
+        produtos.setQuantidade(quantidade);
+        produtos.setDataqueacabou(data);
+        produtos.setNomelista(nomedalista);
+
+
+        long id = tableProdutos.insert(produtos.getContentValues());
+        assertNotEquals(-1, id);
+
+        return id;
+    }
+
+    private Cursor getProduto(BdTableProdutos tableProdutos) {
+        return tableProdutos.query(BdTableProdutos.TODAS_COLUNAS, null, null, null, null, null);
+    }
+
+    private Produtos getProdutoComID(Cursor cursor, long id) {
+        Produtos produtos = null;
+
+        while (cursor.moveToNext()) {
+            produtos= produtos.fromCursor(cursor);
+
+            if (produtos.getId() == id) {
+                break;
+            }
+        }
+
+        assertNotNull(produtos);
+
+        return produtos;
+    }
+
+    //TABELA CATEGORIAS
+
+    private long criaCategoria(BdTableCategorias tabelaCategorias, String nome) {
+        Categoria categoria = new Categoria();
+        categoria.setDescricao(nome);
+
+        long id = tabelaCategorias.insert(categoria.getContentValues());
+        assertNotEquals(-1, id);
+
+        return id;
+    }
+
+    private Cursor getCategorias(BdTableCategorias tabelaCategorias) {
+        return tabelaCategorias.query(BdTableCategorias.TODAS_COLUNAS, null, null, null, null, null);
+    }
+
+    private Categoria getCategoriaComID(Cursor cursor, long id) {
+        Categoria categoria = null;
+
+        while (cursor.moveToNext()) {
+            categoria = Categoria.fromCursor(cursor);
+
+            if (categoria.getId() == id) {
+                break;
+            }
+        }
+
+        assertNotNull(categoria);
+
+        return categoria;
+    }
+
 }

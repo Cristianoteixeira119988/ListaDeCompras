@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 public class Categoria {
     private long id;
-    private String nomecategoria;
+    private String descricao;
 
     public long getId() {
         return id;
@@ -15,33 +15,35 @@ public class Categoria {
         this.id = id;
     }
 
-    public String getNomecategoria() {
-        return nomecategoria;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setNomecategoria(String nomecategoria) {
-        this.nomecategoria = nomecategoria;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
+
     public ContentValues getContentValues() {
         ContentValues valores = new ContentValues();
 
-        valores.put(BdTableCategoria.CAMPO_CATEGORIA, nomecategoria);
+        valores.put(BdTableCategorias.CAMPO_DESCRICAO, descricao);
 
         return valores;
     }
+
     public static Categoria fromCursor(Cursor cursor) {
         long id = cursor.getLong(
-                cursor.getColumnIndex(BdTableCategoria._ID)
+                cursor.getColumnIndex(BdTableCategorias._ID)
         );
 
-        String nomecaterogia = cursor.getString(
-                cursor.getColumnIndex(BdTableCategoria.CAMPO_CATEGORIA)
+        String descricao = cursor.getString(
+                cursor.getColumnIndex(BdTableCategorias.CAMPO_DESCRICAO)
         );
 
         Categoria categoria = new Categoria();
 
         categoria.setId(id);
-        categoria.setNomecategoria(nomecaterogia);
+        categoria.setDescricao(descricao);
 
         return categoria;
     }

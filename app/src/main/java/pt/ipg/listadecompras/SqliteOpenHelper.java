@@ -15,7 +15,7 @@ public class SqliteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        new BdTableCategoria(db).cria();
+        new BdTableCategorias(db).cria();
         new BdTableListas(db).cria();
         new BdTableProdutos(db).cria();
 

@@ -13,6 +13,7 @@ public class BdTableListas implements BaseColumns {
     public static final String CAMPO_NOME_LISTA = "Nomedalista";
     public static final String CAMPO_DATA_CRIACAO = "Datadecriação";
     private SQLiteDatabase db;
+    public static final String[] TODAS_COLUNAS = new String[] { _ID, CAMPO_NOME_LISTA, CAMPO_DATA_CRIACAO};
 
     public BdTableListas(SQLiteDatabase db) {
         this.db = db;

@@ -8,7 +8,7 @@ import java.util.Date;
 public class Produtos {
     private long id;
     private String nomeproduto;
-    private String categoria;
+    private long categoria;
     private int quantidade;
     private String dataqueacabou;
     private String nomelista;
@@ -37,11 +37,11 @@ public class Produtos {
         this.nomeproduto = nomeproduto;
     }
 
-    public String getCategoria() {
+    public long getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(long categoria) {
         this.categoria = categoria;
     }
 
@@ -86,7 +86,7 @@ public class Produtos {
                 cursor.getColumnIndex(BdTableProdutos.CAMPO_QUANTIDADE)
         );
 
-        String categoria = cursor.getString(
+        long categoria = cursor.getLong(
                 cursor.getColumnIndex(BdTableProdutos.CAMPO_CATEGORIA)
         );
         String dataquefaltou = cursor.getString(

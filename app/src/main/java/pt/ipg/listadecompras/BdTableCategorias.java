@@ -5,13 +5,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class BdTableCategoria implements BaseColumns {
+public class BdTableCategorias implements BaseColumns {
     public static final String NOME_TABELA = "Categorias";
-    public static final String CAMPO_CATEGORIA = "NomeCategoria";
+    public static final String CAMPO_DESCRICAO = "NomeCategoria";
 
     private SQLiteDatabase db;
+    public static final String[] TODAS_COLUNAS = new String[] { _ID, CAMPO_DESCRICAO};
 
-    public BdTableCategoria(SQLiteDatabase db) {
+
+    public BdTableCategorias(SQLiteDatabase db) {
         this.db = db;
     }
 
@@ -19,7 +21,7 @@ public class BdTableCategoria implements BaseColumns {
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_CATEGORIA + " TEXT NOT NULL" +
+                        CAMPO_DESCRICAO+ " TEXT NOT NULL" +
                         ")"
         );
     }

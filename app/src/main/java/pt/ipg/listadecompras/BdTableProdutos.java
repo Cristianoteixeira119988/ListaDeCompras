@@ -14,6 +14,8 @@ public class BdTableProdutos implements BaseColumns {
     public static final String CAMPO_DATA_FALTOU = "Data";
     public static final String CAMPO_NOME_LISTA = "Lista";
     private SQLiteDatabase db;
+    public static final String[] TODAS_COLUNAS = new String[] { _ID, CAMPO_NOME_PRODUTO, CAMPO_QUANTIDADE, CAMPO_CATEGORIA, CAMPO_DATA_FALTOU, CAMPO_NOME_LISTA };
+
 
     public BdTableProdutos(SQLiteDatabase db) {
         this.db = db;
@@ -28,7 +30,7 @@ public class BdTableProdutos implements BaseColumns {
                         CAMPO_QUANTIDADE + " INTEGER NOT NULL," +
                         CAMPO_DATA_FALTOU + " DATE NOT NULL," +
                         CAMPO_NOME_LISTA + " TEXT NOT NULL," +
-                        "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategoria.NOME_TABELA + "(" + BdTableCategoria._ID + ")" +
+                        "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategorias.NOME_TABELA + "(" + BdTableCategorias._ID + ")" +
                         ")"
         );
     }
