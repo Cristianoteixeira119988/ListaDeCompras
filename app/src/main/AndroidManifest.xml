@@ -12,7 +12,7 @@
         <activity
             android:name=".EditarProduto2"
             android:label="@string/title_activity_editar_produto2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EliminarCategoria"
             android:label="@string/title_activity_eliminar_categoria"
@@ -71,9 +71,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="pt.ipg.listadecompras"
             android:name=".ListasContentProvider"
+            android:authorities="pt.ipg.listadecompras"
             android:exported="false" />
     </application>
 
