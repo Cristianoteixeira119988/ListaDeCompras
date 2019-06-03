@@ -34,7 +34,7 @@ public class MinhasListas extends AppCompatActivity implements LoaderManager.Loa
         setSupportActionBar(toolbar);
 
         recyclerViewListas = (RecyclerView) findViewById(R.id.recyclerViewListas);
-        adaptadorListas = new AdaptadorListas();
+        adaptadorListas = new AdaptadorListas(this);
         recyclerViewListas.setAdapter(adaptadorListas);
         recyclerViewListas.setLayoutManager(new LinearLayoutManager(this));
 

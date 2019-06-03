@@ -46,21 +46,44 @@ public class AdaptadorListas extends RecyclerView.Adapter<AdaptadorListas.ViewHo
 
         return cursor.getCount();
     }
+    private static ViewHolderListas viewHolderListaSelecionado = null;
 
-    public class ViewHolderListas extends RecyclerView.ViewHolder {
+    public class ViewHolderListas extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView textViewNomeLista;
+        private TextView textViewData;
 
 
         private Listas lista;
         public ViewHolderListas(@NonNull View itemView) {
             super(itemView);
-            textViewNomeLista = (TextView)itemView.findViewById(R.id.textViewNomeLista);
+            textViewNomeLista = (TextView)itemView.findViewById(R.id.textViewNomeDaListaItem);
+            textViewData = (TextView)itemView.findViewById(R.id.textViewDataDeCriacaoItem);
 
+            itemView.setOnClickListener(this);
         }
         public void setLista(Listas lista){
             this.lista=lista;
             textViewNomeLista.setText(lista.getNomelista());
+            textViewData.setText(String.valueOf(lista.getDatacriacao()));
+        }
+
+        @Override
+        public void onClick(View v) {if (viewHolderListaSelecionado != null) {
+            viewHolderListaSelecionado.desSeleciona();
+        }
+
+            viewHolderListaSelecionado = this;
+
+            seleciona();
+        }
+
+        private void desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorItemSelecionado);
         }
     }
 }
