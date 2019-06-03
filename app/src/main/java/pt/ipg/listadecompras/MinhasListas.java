@@ -76,6 +76,7 @@ public class MinhasListas extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
+        Toast.makeText(this, ("Contem" + ID_CURSO_LOADER_LISTAS + "listas"), Toast.LENGTH_SHORT).show();
 
     }
 
