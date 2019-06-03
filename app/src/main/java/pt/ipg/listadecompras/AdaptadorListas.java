@@ -10,7 +10,10 @@ public class AdaptadorListas extends RecyclerView.Adapter<AdaptadorListas.ViewHo
     private Cursor cursor;
 
     public void setCursor(Cursor cursor) {
-        this.cursor = cursor;
+        if (this.cursor != cursor) {
+            this.cursor = cursor;
+            notifyDataSetChanged();
+        }
     }
 
 
