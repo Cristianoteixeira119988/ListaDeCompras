@@ -46,6 +46,12 @@ public class AdaptadorListas extends RecyclerView.Adapter<AdaptadorListas.ViewHo
 
         return cursor.getCount();
     }
+
+    public Listas getListaSelecionada() {
+        if (viewHolderListaSelecionado == null) return null;
+
+        return viewHolderListaSelecionado.lista;
+    }
     private static ViewHolderListas viewHolderListaSelecionado = null;
 
     public class ViewHolderListas extends RecyclerView.ViewHolder implements View.OnClickListener{
