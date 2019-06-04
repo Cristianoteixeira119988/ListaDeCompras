@@ -80,7 +80,7 @@ public class AdaptadorProdutos extends RecyclerView.Adapter<AdaptadorProdutos.Vi
             this.produtos=produtos;
             textViewCategoria.setText(String.valueOf(produtos.getCategoria()));
             textViewNomeProduto.setText(produtos.getNomeproduto());
-            textViewNomeLista.setText(produtos.getNomelista());
+            textViewNomeLista.setText(String.valueOf(produtos.getNomelista()));
             textViewQuantidade.setText(String.valueOf(produtos.getQuantidade()));
             textViewDataFaltou.setText(String.valueOf(produtos.getDataqueacabou()));
 

@@ -11,13 +11,13 @@ public class Produtos {
     private long categoria;
     private int quantidade;
     private String dataqueacabou;
-    private String nomelista;
+    private Long nomelista;
 
-    public String getNomelista() {
+    public long getNomelista() {
         return nomelista;
     }
 
-    public void setNomelista(String nomelista) {
+    public void setNomelista(long nomelista) {
         this.nomelista= nomelista;
     }
 
@@ -92,7 +92,7 @@ public class Produtos {
         String dataquefaltou = cursor.getString(
                 cursor.getColumnIndex(BdTableProdutos.CAMPO_DATA_FALTOU)
         );
-        String nomelista= cursor.getString(
+        long nomelista= cursor.getLong(
                 cursor.getColumnIndex(BdTableProdutos.CAMPO_NOME_LISTA)
         );
 
