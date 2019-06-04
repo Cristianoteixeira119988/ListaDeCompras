@@ -19,6 +19,7 @@ import android.widget.Toast;
 public class TodosProduto extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_PRODUTOS = 0;
+    public static final String ID_PRODUTO = "ID_PRODUTO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class TodosProduto extends AppCompatActivity implements LoaderManager.Loa
         setSupportActionBar(toolbar);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
+
 
 
 
