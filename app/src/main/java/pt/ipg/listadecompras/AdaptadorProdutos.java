@@ -47,7 +47,7 @@ public class AdaptadorProdutos extends RecyclerView.Adapter<AdaptadorProdutos.Vi
         return cursor.getCount();
     }
 
-    public Produtos getProdutoSelecionada() {
+    public Produtos getProdutoSelecionado() {
         if (viewHolderProdutoSelecionado == null) return null;
 
         return viewHolderProdutoSelecionado.produtos;
@@ -56,21 +56,33 @@ public class AdaptadorProdutos extends RecyclerView.Adapter<AdaptadorProdutos.Vi
 
     public class ViewHolderProdutos extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        private TextView textViewNomeProduto;
+        private TextView textViewNomeLista;
         private TextView textViewCategoria;
+        private TextView textViewQuantidade;
+        private TextView textViewDataFaltou;
 
 
 
         private Produtos produtos;
         public ViewHolderProdutos(@NonNull View itemView) {
             super(itemView);
-            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewItemCategoria);
+            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewCategoriaItemProduto);
+            textViewNomeProduto = (TextView)itemView.findViewById(R.id.textViewNomeProdutoItemProduto);
+            textViewNomeLista = (TextView)itemView.findViewById(R.id.textViewNomeListaItemProduto);
+            textViewQuantidade = (TextView)itemView.findViewById(R.id.textViewQuantidadeItemProduto);
+            textViewDataFaltou = (TextView)itemView.findViewById(R.id.textViewDataqueFaltouItemProduto);
 
 
             itemView.setOnClickListener(this);
         }
         public void setProdutos(Produtos produtos){
             this.produtos=produtos;
-            textViewCategoria.setText(categoria.getDescricao());
+            textViewCategoria.setText(String.valueOf(produtos.getCategoria()));
+            textViewNomeProduto.setText(produtos.getNomeproduto());
+            textViewNomeLista.setText(produtos.getNomelista());
+            textViewQuantidade.setText(String.valueOf(produtos.getQuantidade()));
+            textViewDataFaltou.setText(String.valueOf(produtos.getDataqueacabou()));
 
         }
 
