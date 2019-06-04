@@ -28,9 +28,9 @@ public class AdaptadorListas extends RecyclerView.Adapter<AdaptadorListas.ViewHo
     @NonNull
     @Override
     public AdaptadorListas.ViewHolderListas onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View itemLivro = LayoutInflater.from(context).inflate(R.layout.item_lista, parent, false);
+        View itemLista = LayoutInflater.from(context).inflate(R.layout.item_lista, parent, false);
 
-        return new ViewHolderListas(itemLivro);
+        return new ViewHolderListas(itemLista);
     }
 
     @Override
@@ -80,6 +80,8 @@ public class AdaptadorListas extends RecyclerView.Adapter<AdaptadorListas.ViewHo
         }
 
             viewHolderListaSelecionado = this;
+
+            ((MinhasListas) context).atualizaOpcoesMenu();
 
             seleciona();
         }
