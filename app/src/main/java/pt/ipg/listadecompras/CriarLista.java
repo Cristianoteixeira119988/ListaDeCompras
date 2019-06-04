@@ -40,7 +40,7 @@ public class CriarLista extends AppCompatActivity implements LoaderManager.Loade
 
 
         TextEditNomelista= (EditText) findViewById(R.id.EditTextNomeDalista);
-        
+
         textviewdata = (TextView) findViewById(R.id.textViewData);
         SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
         Date data =  new Date();

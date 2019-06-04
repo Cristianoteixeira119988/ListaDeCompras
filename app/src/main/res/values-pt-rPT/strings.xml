@@ -88,4 +88,5 @@
     <string name="title_activity_inserir_categoria">Inserir Categoria</string>
     <string name="title_activity_inserir_produto">Inserir Produto</string>
     <string name="todas_as_categorias">Todas as categorias:</string>
+    <string name="data_em_que_faltouu">Data em que faltou:</string>
 </resources>
