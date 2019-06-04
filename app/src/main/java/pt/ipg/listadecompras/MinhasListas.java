@@ -25,9 +25,7 @@ public class MinhasListas extends AppCompatActivity implements LoaderManager.Loa
     private static final int ID_CURSO_LOADER_LISTAS = 0;
     public static final String ID_LISTA = "ID_LISTA";
 
-    private Button botaoeditarlista;
-    private Button botaoapagarlista;
-    private Button botaocriarlistaminhaslistas;
+
     private AdaptadorListas adaptadorListas;
     private RecyclerView recyclerViewListas;
     @Override
@@ -44,37 +42,7 @@ public class MinhasListas extends AppCompatActivity implements LoaderManager.Loa
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTAS, null, this);
 
-        botaoeditarlista = (Button) findViewById(R.id.buttonEditarLista);
-        botaoapagarlista = (Button) findViewById(R.id.buttonApagarLista);
-        botaocriarlistaminhaslistas=(Button) findViewById(R.id.buttonCriarlistaML);
 
-        botaoapagarlista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), getString(R.string.carregar_botao_apagar), Toast.LENGTH_SHORT).show();
-                Intent outraactivity= new Intent(MinhasListas.this,ApagarLista.class );
-                startActivity(outraactivity);
-
-
-            }
-        });
-
-        botaoeditarlista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), getString(R.string.carregar_botao_editar_lista), Toast.LENGTH_SHORT).show();
-                Intent outraactivity = new Intent(MinhasListas.this, EditarLista.class);
-                startActivity(outraactivity);
-            }
-        });
-        botaocriarlistaminhaslistas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), getString(R.string.carregou_para_criar_lista), Toast.LENGTH_SHORT).show();
-                Intent outraactivity = new Intent(MinhasListas.this, CriarLista.class);
-                startActivity(outraactivity);
-            }
-        });
 
     }
 

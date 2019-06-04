@@ -20,6 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_adicionar_produto" />
+    <include layout="@layout/content_todos_produtos" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -94,4 +94,5 @@
     <string name="nome_obrigatorio_geral">"Name required! "</string>
     <string name="title_activity_editar_produto2">"Edit Product "</string>
     <string name="Erro">Erro</string>
+    <string name="nome_da_lista_a_adicionar">Nome da lista a adicionar:</string>
 </resources>
