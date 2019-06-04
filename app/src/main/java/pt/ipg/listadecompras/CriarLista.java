@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -23,9 +24,9 @@ import java.util.Date;
 
 public class CriarLista extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private Button botaoguardar;
+
     private EditText TextEditNomelista;
-    private Button botaocancelar;
+
     private TextView textviewdata;
 
     @Override
@@ -37,10 +38,15 @@ public class CriarLista extends AppCompatActivity implements LoaderManager.Loade
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        botaoguardar = (Button) findViewById(R.id.buttonGuardar);
+
         TextEditNomelista= (EditText) findViewById(R.id.EditTextNomeDalista);
-        botaocancelar = (Button) findViewById(R.id.buttonCancelar);
+        
         textviewdata = (TextView) findViewById(R.id.textViewData);
+        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
+        Date data =  new Date();
+        String dataFormatada =  formatadata.format(data);
+
+        textviewdata.setText(dataFormatada);
 
 
 
@@ -99,6 +105,21 @@ public class CriarLista extends AppCompatActivity implements LoaderManager.Loade
 
         listas.setNomelista(nomelista);
         listas.setDatacriacao(dataFormatada);
+
+        try {
+            getContentResolver().insert(ListasContentProvider.ENDERECO_LISTAS, listas.getContentValues());
+
+            Toast.makeText(this, getString(R.string.lista_criada), Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (Exception e) {
+            Snackbar.make(
+                    TextEditNomelista,
+                    getString(R.string.Erro),
+                    Snackbar.LENGTH_LONG)
+                    .show();
+
+            e.printStackTrace();
+        }
 
 
 
