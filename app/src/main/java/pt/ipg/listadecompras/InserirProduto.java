@@ -71,8 +71,7 @@ public class InserirProduto extends AppCompatActivity  implements AdapterView.On
         });
         //-----------------------------------------4
 
-        botaoinserir =(Button) findViewById(R.id.buttonInserirProdutoFinal);
-        botaocancelar= (Button) findViewById(R.id.buttonCancelar);
+
         edittextnomeproduto=(EditText) findViewById(R.id.EditTextNomeDoProduto);
         edittextquantidadeproduto=(EditText) findViewById(R.id.EditTextQuantidade);
 

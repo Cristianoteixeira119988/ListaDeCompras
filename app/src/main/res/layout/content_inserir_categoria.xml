@@ -43,25 +43,4 @@
             android:hint="@string/nome" />
     </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/buttonInserirCaategoria"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/inserir"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCancelar"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/cancelar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>
