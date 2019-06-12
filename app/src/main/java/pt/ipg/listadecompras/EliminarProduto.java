@@ -12,8 +12,7 @@ import android.widget.Toast;
 
 public class EliminarProduto extends AppCompatActivity {
 
-    private Button botaocancelar;
-    private Button botaoeliminarproduto;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

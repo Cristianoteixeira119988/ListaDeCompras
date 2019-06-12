@@ -1,18 +1,23 @@
 package pt.ipg.listadecompras;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EliminarCategoria extends AppCompatActivity {
 
-    private Button botaocancelar;
-    private Button botaoeliminarcategoria;
+    private Uri enderecoCategoriaApagar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,24 +26,74 @@ public class EliminarCategoria extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        botaocancelar=(Button) findViewById(R.id.buttonCancelar);
-        botaoeliminarcategoria=(Button) findViewById(R.id.buttonEliminarCategoria);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        botaocancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            TextView textViewCategoria = (TextView) findViewById(R.id.textViewEleminarCategoria);
+
+
+
+            Intent intent = getIntent();
+            long idCategoria = intent.getLongExtra(Categorias.ID_CATEGORIA, -1);
+            if (idCategoria == -1) {
+                Toast.makeText(this, "Erro: não foi possível apagar a Categoria", Toast.LENGTH_LONG).show();
                 finish();
+                return;
             }
-        });
 
-        botaoeliminarcategoria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(EliminarCategoria.this, getString(R.string.categoria_eliminada_com_sucesso), Toast.LENGTH_SHORT).show();
+            enderecoCategoriaApagar = Uri.withAppendedPath(ListasContentProvider.ENDERECO_CATEGORIAS, String.valueOf(idCategoria));
+
+            Cursor cursor = getContentResolver().query(enderecoCategoriaApagar, BdTableCategorias.TODAS_COLUNAS, null, null, null);
+
+            if (!cursor.moveToNext()) {
+                Toast.makeText(this, "Erro: não foi possível apagar a Categoria", Toast.LENGTH_LONG).show();
                 finish();
+                return;
             }
-        });
 
+            Categoria categoria = Categoria.fromCursor(cursor);
+
+            textViewCategoria.setText(categoria.getDescricao());
+
+        }
+
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_eliminar, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.action_settings) {
+                return true;
+            } else if (id == R.id.action_eliminar) {
+                eliminar();
+                return true;
+            } else if (id == R.id.action_cancelar) {
+                finish();
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
+
+        private void eliminar () {
+            // todo: perguntar ao utilizador se tem a certeza
+            int CateogriasApagadas = getContentResolver().delete(enderecoCategoriaApagar, null, null);
+
+            if (CateogriasApagadas == 1) {
+                Toast.makeText(this, "Categoria eliminada com sucesso", Toast.LENGTH_LONG).show();
+                finish();
+            } else {
+                Toast.makeText(this, "Erro: Não foi possível eliminar a categoria", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
-}
