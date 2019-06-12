@@ -8,27 +8,35 @@
     tools:context=".EditarProduto2"
     tools:showIn="@layout/activity_editar_produto2">
 
-    <Button
-        android:id="@+id/buttonCancelar"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/cancelar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/buttonGuardarProduto"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+    <Spinner
+        android:id="@+id/spinnerNomeDaListaEd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/nome_da_lista_a_adicionar"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
     <Button
         android:id="@+id/buttonEscolherDataQueFaltou2"
@@ -42,13 +50,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5" />
 
     <TextView
-        android:id="@+id/textViewDataSelecionada2"
+        android:id="@+id/textViewDataEd"
         android:layout_width="214dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/data"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonEscolherDataQueFaltou2"
         app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5" />
@@ -77,10 +84,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria3" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoriaEd" />
 
     <Spinner
-        android:id="@+id/spinnerCategoria3"
+        android:id="@+id/spinnerCategoriaEd"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -115,46 +122,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/novo_nome_produto"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Arroz"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout8"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView31">
+        app:layout_constraintTop_toBottomOf="@+id/textView29">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/EditTextNovonomeproduto"
+            android:id="@+id/EditTextNomeDoProdutoEd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/novo_nome" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -168,9 +148,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView33">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/EditTextQuantidadeNova"
+            android:id="@+id/EditTextQuantidadeEd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="7" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 </android.support.constraint.ConstraintLayout>
