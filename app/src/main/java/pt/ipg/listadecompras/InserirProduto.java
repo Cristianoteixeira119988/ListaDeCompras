@@ -216,9 +216,7 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        android.support.v7.content. CursorLoader cursorLoader= new  androidx.loader.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.CAMPO_DESCRICAO);
-
-        return cursorLoader;
+        return null;
     }
 
     @Override
