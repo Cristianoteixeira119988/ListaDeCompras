@@ -3,8 +3,6 @@ package pt.ipg.listadecompras;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import java.util.Date;
-
 public class Listas {
     private long id;
 

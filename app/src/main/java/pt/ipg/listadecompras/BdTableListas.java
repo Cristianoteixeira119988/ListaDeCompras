@@ -24,8 +24,7 @@ public class BdTableListas implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_NOME_LISTA + " TEXT NOT NULL," +
-                        CAMPO_DATA_CRIACAO + " DATE NOT NULL,"+
-                        "FOREIGN KEY (" + CAMPO_NOME_LISTA + ") REFERENCES " + BdTableProdutos.NOME_TABELA + "(" + BdTableProdutos._ID + ")" +
+                        CAMPO_DATA_CRIACAO + " DATE NOT NULL"+
                         ")"
         );
     }

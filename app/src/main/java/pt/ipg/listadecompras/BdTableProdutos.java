@@ -30,7 +30,8 @@ public class BdTableProdutos implements BaseColumns {
                         CAMPO_QUANTIDADE + " INTEGER NOT NULL," +
                         CAMPO_DATA_FALTOU + " DATE NOT NULL," +
                         CAMPO_NOME_LISTA + " TEXT NOT NULL," +
-                        "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategorias.NOME_TABELA + "(" + BdTableCategorias._ID + ")" +
+                        "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategorias.NOME_TABELA + "(" + BdTableCategorias._ID + "),"+
+                        "FOREIGN KEY (" + CAMPO_NOME_LISTA + ") REFERENCES " + BdTableListas.NOME_TABELA + "(" + BdTableListas._ID + ")" +
                         ")"
         );
     }

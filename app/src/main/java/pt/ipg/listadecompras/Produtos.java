@@ -3,8 +3,6 @@ package pt.ipg.listadecompras;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import java.util.Date;
-
 public class Produtos {
     private long id;
     private String nomeproduto;
@@ -17,7 +15,7 @@ public class Produtos {
         return nomelista;
     }
 
-    public void setNomelista(long nomelista) {
+    public void setNomelista(Long nomelista) {
         this.nomelista= nomelista;
     }
 

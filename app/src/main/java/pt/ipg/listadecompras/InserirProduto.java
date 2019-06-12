@@ -1,6 +1,8 @@
 package pt.ipg.listadecompras;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.CursorLoader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -96,7 +98,6 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
         @Override
         protected void onResume() {
             getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
-            getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_LISTAS, null, this);
 
             super.onResume();
         }
@@ -121,7 +122,10 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
             spinnerlista.setAdapter(adaptadorListas);
         }
 
-        @Override
+
+
+
+    @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
             getMenuInflater().inflate(R.menu.menu_guardar, menu);
@@ -208,13 +212,16 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
             }
         }
 
-        @NonNull
-        @Override
-        public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
-            return null;
-        }
 
-        @Override
+    @NonNull
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
+        android.support.v7.content. CursorLoader cursorLoader= new  androidx.loader.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.CAMPO_DESCRICAO);
+
+        return cursorLoader;
+    }
+
+    @Override
         public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
             mostraCategoriasSpinner(data);
             mostraListasSpinner(data);
