@@ -97,4 +97,5 @@
     <string name="nome_da_lista_a_adicionar">Nome da lista a adicionar:</string>
     <string name="erro">erro</string>
     <string name="nome_da_listaaa">Nome da lista:</string>
+    <string name="data_obrigatoria">Data obrigatoria</string>
 </resources>
