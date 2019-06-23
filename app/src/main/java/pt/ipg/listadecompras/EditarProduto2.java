@@ -71,6 +71,7 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         edittextnomeproduto = (EditText) findViewById(R.id.EditTextNomeDoProdutoEd);
         spinnercategorias = (Spinner) findViewById(R.id.spinnerCategoriaEd);
         edittextquantidadeproduto = (EditText) findViewById(R.id.EditTextQuantidadeEd);
+        spinnerNomeLista=(Spinner) findViewById(R.id.spinnerNomeDaListaEd);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
 
@@ -101,41 +102,13 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         edittextquantidadeproduto.setText(String.valueOf(produtos.getQuantidade()));
 
         actualizaCategoriaSelecionada();
+        actualizaListaSelecionada();
 
-
-
-        //calendario-----------------------------4
-        txtViewVerData = (TextView) findViewById(R.id.textViewDataEd);
-        botaoescolherdata = (Button) findViewById(R.id.buttonEscolherDataQueFaltou2);
-        botaoescolherdata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendario = Calendar.getInstance();
-                int dia = calendario.get(Calendar.DAY_OF_MONTH);
-                int mes = calendario.get(Calendar.MONTH);
-                int ano = calendario.get(Calendar.YEAR);
-
-                datapiker = new DatePickerDialog(EditarProduto2.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int mAno, int mMes, int mDia) {
-                        txtViewVerData.setText(mDia + "-" + (mMes + 1) + "-" + mAno);
-                    }
-                }, dia, mes, ano);
-                datapiker.show();
-            }
-        });
-        //-----------------------------------------4
 
         edittextnomeproduto = (EditText) findViewById(R.id.EditTextNomeDoProdutoEd);
         edittextquantidadeproduto = (EditText) findViewById(R.id.EditTextQuantidadeEd);
 
-        SimpleDateFormat formatadata = new SimpleDateFormat("dd-MM-yyyy");
-        Date data = new Date();
-        String dataFormatada = formatadata.format(data);
-
-        txtViewVerData.setText(dataFormatada);
-
-    }
+       }
 
 
 
