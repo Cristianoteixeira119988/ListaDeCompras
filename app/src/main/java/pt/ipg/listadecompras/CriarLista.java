@@ -96,32 +96,17 @@ public class CriarLista extends AppCompatActivity implements LoaderManager.Loade
             TextEditNomelista.setError(getString(R.string.numero_minimo_de_caracters));
         }else if(nomelista.length() >= 25){
             TextEditNomelista.setError(getString(R.string.numero_maximo_de_caracters));
+
         }else {
+            Listas listas = new Listas();
+
+            listas.setNomelista(nomelista);
+            listas.setDatacriacao(dataFormatada);
+
             Toast.makeText(CriarLista.this, getString(R.string.lista_criada), Toast.LENGTH_SHORT).show();
-            finish();
-        }
-
-        Listas listas = new Listas();
-
-        listas.setNomelista(nomelista);
-        listas.setDatacriacao(dataFormatada);
-
-        try {
             getContentResolver().insert(ListasContentProvider.ENDERECO_LISTAS, listas.getContentValues());
-
-            Toast.makeText(this, getString(R.string.lista_criada), Toast.LENGTH_SHORT).show();
             finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    TextEditNomelista,
-                    getString(R.string.Erro),
-                    Snackbar.LENGTH_LONG)
-                    .show();
-
-            e.printStackTrace();
         }
-
-
 
 
 

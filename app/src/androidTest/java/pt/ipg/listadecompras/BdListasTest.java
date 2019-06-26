@@ -87,7 +87,7 @@ public class BdListasTest {
 
         assertEquals(nome, categoria.getDescricao());
 
-        // Teste Create/Delete/Read categorias (CRuD)
+        // Crud categorias (CRuD)
         long id = criaCategoria(tabelaCategorias, "TESTE");
         cursorCategorias = getCategorias(tabelaCategorias);
         assertEquals(3, cursorCategorias.getCount());
@@ -99,7 +99,70 @@ public class BdListasTest {
         getCategoriaComID(cursorCategorias, idMercearia);
         getCategoriaComID(cursorCategorias, idBricolage);
 
-        BdTableListas tabelaListas = new BdTableListas(db);
+
+
+        //Teste listas
+
+        BdTableListas tableListas = new BdTableListas(db);
+
+        Cursor cursorListas = getListas(tableListas);
+        assertEquals(0, cursorListas.getCount());
+
+        //Teste create / read listas
+
+        String nome1= "Lista8";
+        String data="19-05-2019";
+        long idLista8 = criaLista(tableListas, nome1, data);
+
+        cursorListas = getListas(tableListas);
+        assertEquals(1, cursorListas.getCount());
+
+        Listas listas = getListaComID(cursorListas, idLista8);
+
+        assertEquals(nome1, listas.getNomelista());
+        assertEquals(data, listas.getDatacriacao());
+
+        nome1= "Lista9";
+        data="01-05-2019";
+        long idLista9 = criaLista(tableListas, nome1, data);
+
+        cursorListas = getListas(tableListas);
+        assertEquals(2, cursorListas.getCount());
+
+        listas = getListaComID(cursorListas, idLista9);
+
+        assertEquals(nome1, listas.getNomelista());
+        assertEquals(data, listas.getDatacriacao());
+
+        //Update listas
+
+        nome1 = "Lista10";
+        data = "02-05-2019";
+
+        listas.setNomelista(nome1);
+        listas.setDatacriacao(data);
+
+        int registosAlteradosListas = tableListas.update(listas.getContentValues(), BdTableListas._ID + "=?", new String[]{String.valueOf(idLista9)});
+
+        cursorListas = getListas(tableListas);
+        listas = getListaComID(cursorListas, idLista8);
+
+        assertEquals(nome1, listas.getNomelista());
+        assertEquals(data, listas.getDatacriacao());
+
+
+        //Crud listas
+
+        long id2 = criaLista(tableListas,"Lista11", "03-05-2019");
+        cursorListas = getListas(tableListas);
+        assertEquals(3, cursorListas.getCount());
+
+        tableListas.delete(BdTableListas._ID + "=?", new String[]{String.valueOf(id2)});
+        cursorListas = getListas(tableListas);
+        assertEquals(2, cursorListas.getCount());
+
+        getListaComID(cursorListas, idLista8);
+        getListaComID(cursorListas, idLista9);
 
         //Teste produtos
 
@@ -111,140 +174,76 @@ public class BdListasTest {
         // Teste create / read produtos (cRud)
 
         String nomeproduto ="Massa";
-        String data = "12/05/2019";
+        String data2 = "12/05/2019";
         int quantidade = 1;
-        String nomedalista = "Lista9";
-        long idITS = criaProduto(tableProdutos, nomeproduto,(int) idBricolage, quantidade, data, nomedalista);
+
+        long idProduto1 = criaProduto(tableProdutos, nomeproduto,(int) idBricolage, quantidade, data2, idLista8);
 
         cursorProdutos = getProduto(tableProdutos);
         assertEquals(1, cursorProdutos.getCount());
 
-        Produtos produtos = getProdutoComID(cursorProdutos, idITS);
+        Produtos produtos = getProdutoComID(cursorProdutos, idProduto1);
 
         assertEquals(nomeproduto, produtos.getNomeproduto());
         assertEquals(idBricolage, produtos.getCategoria());
-        assertEquals(data, produtos.getDataqueacabou());
+        assertEquals(data2, produtos.getDataqueacabou());
         assertEquals(quantidade,produtos.getQuantidade());
-        assertEquals(nomedalista,produtos.getNomelista());
+        assertEquals(idLista8,produtos.getNomelista());
 
         nomeproduto ="Batatas";
         quantidade= 8;
-        data = "15/05/2019";
-        long idJW = criaProduto(tableProdutos, nomeproduto, (int) idMercearia, quantidade, data, nomedalista);
+        data2 = "15/05/2019";
+        long idProduto2 = criaProduto(tableProdutos, nomeproduto, (int) idMercearia, quantidade, data2, idLista9);
 
         cursorProdutos = getProduto(tableProdutos);
         assertEquals(2, cursorProdutos.getCount());
 
-        produtos = getProdutoComID(cursorProdutos, idJW);
+        produtos = getProdutoComID(cursorProdutos, idProduto2
+        );
 
         assertEquals(nomeproduto, produtos.getNomeproduto());
         assertEquals(idMercearia, produtos.getCategoria());
-        assertEquals(data, produtos.getDataqueacabou());
+        assertEquals(data2, produtos.getDataqueacabou());
         assertEquals(quantidade,produtos.getQuantidade());
-        assertEquals(nomedalista,produtos.getNomelista());
+        assertEquals(idLista9,produtos.getNomelista());
 
         //Update produtos
 
         nomeproduto ="cenouras";
         quantidade= 4;
-        data = "18/05/2019";
-        nomedalista= "lista4";
+        data2 = "18/05/2019";
 
         produtos.setNomeproduto(nomeproduto);
         produtos.setCategoria(idBricolage);
         produtos.setQuantidade(quantidade);
-        produtos.setDataqueacabou(data);
-        produtos.setNomelista(Long.valueOf(nomedalista));
+        produtos.setDataqueacabou(data2);
+        produtos.setNomelista(idLista8);
 
-        int registosAlteradosProdutos = tableProdutos.update(produtos.getContentValues(), BdTableProdutos._ID + "=?", new String[]{String.valueOf(idITS)});
+        int registosAlteradosProdutos = tableProdutos.update(produtos.getContentValues(), BdTableProdutos._ID + "=?", new String[]{String.valueOf(idProduto1)});
 
         assertEquals(1, registosAlteradosProdutos);
 
         cursorProdutos = getProduto(tableProdutos);
-        produtos = getProdutoComID(cursorProdutos, idITS);
+        produtos = getProdutoComID(cursorProdutos, idProduto1);
 
         assertEquals(nomeproduto, produtos.getNomeproduto());
         assertEquals(idBricolage, produtos.getCategoria());
-        assertEquals(data, produtos.getDataqueacabou());
+        assertEquals(data2, produtos.getDataqueacabou());
         assertEquals(quantidade,produtos.getQuantidade());
-        assertEquals(nomedalista,produtos.getNomelista());
+        assertEquals(idLista8,produtos.getNomelista());
 
         //Crud produtos
 
-        id = criaProduto(tableProdutos, "Pão", 3, 5, "13-04-2019", "Lista6");
+        long id3 = criaProduto(tableProdutos, "Pão",, 5, "13-04-2019", "Lista6");
         cursorProdutos = getProduto(tableProdutos);
         assertEquals(3, cursorProdutos.getCount());
 
-        tableProdutos.delete(BdTableProdutos._ID + "=?", new String[]{String.valueOf(id)});
+        tableProdutos.delete(BdTableProdutos._ID + "=?", new String[]{String.valueOf(id3)});
         cursorProdutos = getProduto(tableProdutos);
         assertEquals(2, cursorProdutos.getCount());
 
-        getProdutoComID(cursorProdutos, idITS);
-        getProdutoComID(cursorProdutos, idJW);
-
-        //Teste listas
-
-        BdTableListas tableListas = new BdTableListas(db);
-
-        Cursor cursorListas = getListas(tableListas);
-        assertEquals(0, cursorListas.getCount());
-
-        //Teste create / read listas
-
-        nome= "Lista8";
-        data="19-05-2019";
-        long idLista8 = criaLista(tableListas, nome, data);
-
-        cursorListas = getListas(tableListas);
-        assertEquals(1, cursorListas.getCount());
-
-        Listas listas = getListaComID(cursorListas, idLista8);
-
-        assertEquals(nome, listas.getNomelista());
-        assertEquals(data, listas.getDatacriacao());
-
-        nome= "Lista9";
-        data="01-05-2019";
-        long idLista9 = criaLista(tableListas, nome, data);
-
-        cursorListas = getListas(tableListas);
-        assertEquals(2, cursorListas.getCount());
-
-        listas = getListaComID(cursorListas, idLista9);
-
-        assertEquals(nome, listas.getNomelista());
-        assertEquals(data, listas.getDatacriacao());
-
-        //Update listas
-
-        nome = "Lista10";
-        data = "02-05-2019";
-
-        listas.setNomelista(nome);
-        listas.setDatacriacao(data);
-
-        int registosAlteradosListas = tableListas.update(listas.getContentValues(), BdTableListas._ID + "=?", new String[]{String.valueOf(idLista9)});
-
-        cursorListas = getListas(tableListas);
-        listas = getListaComID(cursorListas, idITS);
-
-        assertEquals(nome, listas.getNomelista());
-        assertEquals(data, listas.getDatacriacao());
-
-
-        //Crud listas
-
-        long id2 = criaLista(tableListas,"Lista11", "03-05-2019");
-        cursorListas = getListas(tableListas);
-        assertEquals(3, cursorListas.getCount());
-
-        tableListas.delete(BdTableListas._ID + "=?", new String[]{String.valueOf(id)});
-        cursorListas = getListas(tableListas);
-        assertEquals(2, cursorListas.getCount());
-
-        getListaComID(cursorListas, idLista8);
-        getListaComID(cursorListas, idLista9);
-
+        getProdutoComID(cursorProdutos, idProduto1);
+        getProdutoComID(cursorProdutos, idProduto2);
 
 
 
@@ -287,7 +286,7 @@ public class BdListasTest {
 
     //tabela produtos
 
-    private long criaProduto(BdTableProdutos tableProdutos, String nome, int categoriaa, int quantidade, String data, String nomedalista) {
+    private long criaProduto(BdTableProdutos tableProdutos, String nome, Long categoriaa, int quantidade, String data, Long nomedalista) {
 
         Produtos produtos = new Produtos();
 

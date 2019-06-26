@@ -98,4 +98,5 @@
     <string name="erro">erro</string>
     <string name="nome_da_listaaa">Nome da lista:</string>
     <string name="data_obrigatoria">Data obrigatoria</string>
+    <string name="data_invalida">Data invalida</string>
 </resources>

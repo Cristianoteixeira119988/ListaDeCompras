@@ -78,33 +78,14 @@ public class InserirCategoria extends AppCompatActivity implements LoaderManager
         }else if(nomecategoria.length() >= 25){
             edittextnomedacategoria.setError(getString(R.string.numero_maximo_de_caracters));
         }else {
+            Categoria categoria = new Categoria();
+
+            categoria.setDescricao(nomecategoria);
+            getContentResolver().insert(ListasContentProvider.ENDERECO_CATEGORIAS, categoria.getContentValues());
+
             Toast.makeText(InserirCategoria.this, getString(R.string.categoria_criada), Toast.LENGTH_SHORT).show();
             finish();
         }
-
-
-        Categoria categoria = new Categoria();
-
-        categoria.setDescricao(nomecategoria);
-
-
-        try {
-            getContentResolver().insert(ListasContentProvider.ENDERECO_CATEGORIAS, categoria.getContentValues());
-
-            Toast.makeText(this, getString(R.string.categoria_criada), Toast.LENGTH_SHORT).show();
-            finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    edittextnomedacategoria,
-                    getString(R.string.Erro),
-                    Snackbar.LENGTH_LONG)
-                    .show();
-
-            e.printStackTrace();
-        }
-
-
-
 
 
     }

@@ -123,28 +123,15 @@ public class EditarLista extends AppCompatActivity implements LoaderManager.Load
             edittextnomenovo.setError(getString(R.string.numero_maximo_de_caracters));
             edittextnomenovo.requestFocus();
         } else {
+            // guardar os dados
+            listas.setNomelista(nomenovo);
+            listas.setDatacriacao(data);
+            getContentResolver().update(enderecoListaEditar, listas.getContentValues(), null, null);
             finish();
             Toast.makeText(EditarLista.this, getString(R.string.lista_alterada), Toast.LENGTH_SHORT).show();
         }
 
-        // guardar os dados
-        listas.setNomelista(nomenovo);
-        listas.setDatacriacao(data);
 
-        try {
-            getContentResolver().update(enderecoListaEditar, listas.getContentValues(), null, null);
-
-            Toast.makeText(this, getString(R.string.lista_alterada), Toast.LENGTH_SHORT).show();
-            finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    edittextnomenovo,
-                    getString(R.string.erro),
-                    Snackbar.LENGTH_LONG)
-                    .show();
-
-            e.printStackTrace();
-        }
     }
 
     @NonNull

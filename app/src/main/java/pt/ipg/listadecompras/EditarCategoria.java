@@ -99,28 +99,15 @@ public class EditarCategoria extends AppCompatActivity implements LoaderManager.
         }else if(novonomecategoria.length() >= 25){
             edittextnovonomedacategoria.setError(getString(R.string.numero_maximo_de_caracters));
         }else {
+            // guardar os dados
+            categorias.setDescricao(novonomecategoria);
+            getContentResolver().update(enderecoCategoriaEditar, categorias.getContentValues(), null, null);
+
             Toast.makeText(EditarCategoria.this, getString(R.string.categoria_guardada), Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        // guardar os dados
-        categorias.setDescricao(novonomecategoria);
 
-
-        try {
-            getContentResolver().update(enderecoCategoriaEditar, categorias.getContentValues(), null, null);
-
-            Toast.makeText(this, getString(R.string.lista_alterada), Toast.LENGTH_SHORT).show();
-            finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    edittextnovonomedacategoria,
-                    getString(R.string.erro),
-                    Snackbar.LENGTH_LONG)
-                    .show();
-
-            e.printStackTrace();
-        }
     }
 
 

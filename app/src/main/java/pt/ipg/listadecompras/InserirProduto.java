@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class InserirProduto extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor>{
@@ -43,7 +44,7 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
         setSupportActionBar(toolbar);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTAS, null, this);
+
 
         edittextnomeproduto=(EditText) findViewById(R.id.EditTextNomeDoProduto);
         edittextquantidadeproduto=(EditText) findViewById(R.id.EditTextQuantidade);
@@ -57,22 +58,22 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
 
     @Override
     protected void onResume() {
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
 
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_LISTAS,null, null);
 
         super.onResume();
     }
-
-    private void mostraListasSpinner(Cursor cursorListas) {
-        SimpleCursorAdapter adaptadorListas = new SimpleCursorAdapter(
+    private void mostraCategoriasSpinner(Cursor cursorCategorias) {
+        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
-                cursorListas,
-                new String[]{BdTableListas.CAMPO_NOME_LISTA},
+                cursorCategorias,
+                new String[]{BdTableCategorias.CAMPO_DESCRICAO},
                 new int[]{android.R.id.text1}
         );
-        spinnerlista.setAdapter(adaptadorListas);
+        spinnercategorias.setAdapter(adaptadorCategorias);
     }
+
 
 
 
@@ -107,7 +108,8 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
     }
 
     private void guardar() {
-        String data = edittextdataquefaltou.getText().toString();
+
+
         String nomeproduto = edittextnomeproduto.getText().toString();
         String quantidade= edittextquantidadeproduto.getText().toString();
         int numeroqt;
@@ -129,49 +131,59 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
             edittextquantidadeproduto.setError(getString(R.string.quantidade_invalida));
             edittextquantidadeproduto.requestFocus();
         } else {
-            finish();
+            // guardar os dados
+            Produtos produtos = new Produtos();
+            long idCategoria = spinnercategorias.getSelectedItemId();
 
-        }
+            String textodata = edittextdataquefaltou.getText().toString();
+            Calendar calendario = Calendar.getInstance();
+            boolean Erros = false;
 
+            try {
 
-       
-        long idLista = spinnerlista.getSelectedItemId();
+                calendario.setLenient(false);
 
+                //da exceção se o ano, o mes e/ou o dia não forem numeros
+                calendario.set(Integer.parseInt(textodata.substring(6)), (Integer.parseInt(textodata.substring(3, 5))) - 1, Integer.parseInt(textodata.substring(0, 2)));
 
-        // guardar os dados
-        Produtos produtos = new Produtos();
+                //ve se ano é valido(1º filme é de 1895, logo 1890 parece um bom valor)
+                //da exceção se a data for invalida
+                if (calendario.get(Calendar.YEAR) < 2000) {
 
-        produtos.setNomeproduto(nomeproduto);
+                    edittextdataquefaltou.setError(getString(R.string.data_invalida));
+                    edittextdataquefaltou.requestFocus();
+                    Erros = true;
+                }
+            } catch (Exception e) {
 
-        produtos.setQuantidade(numeroqt);
-        produtos.setDataqueacabou(data);
-        produtos.setNomelista(idLista);
+                edittextdataquefaltou.setError(getString(R.string.data_invalida));
+                edittextdataquefaltou.requestFocus();
+                Erros = true;
+            }
 
-        try {
+            produtos.setNomeproduto(nomeproduto);
+            produtos.setCategoria(idCategoria);
+            produtos.setQuantidade(numeroqt);
+            produtos.setDataqueacabou(textodata);
             getContentResolver().insert(ListasContentProvider.ENDERECO_PRODUTOS, produtos.getContentValues());
-
             Toast.makeText(this, getString(R.string.produto_inserido_com_sucesso), Toast.LENGTH_SHORT).show();
-            finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    edittextnomeproduto,
-                    getString(R.string.erro),
-                    Snackbar.LENGTH_LONG)
-                    .show();
 
-            e.printStackTrace();
+            finish();
+
+
         }
+
     }
 
 
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-
-
-
-            android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_LISTAS, BdTableListas.TODAS_COLUNAS, null, null, BdTableListas.CAMPO_NOME_LISTA
+            android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
             );
+
+
+
 
 
         return cursorLoader;
@@ -179,8 +191,8 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
 
     @Override
     public void onLoadFinished(@NonNull android.support.v4.content.Loader<Cursor> loader, Cursor data) {
+        mostraCategoriasSpinner(data);
 
-        mostraListasSpinner(data);
 
 
     }
@@ -188,8 +200,8 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
     @Override
     public void onLoaderReset(@NonNull android.support.v4.content.Loader<Cursor> loader) {
 
+        mostraCategoriasSpinner(null);
 
-        mostraListasSpinner(null);
     }
 
 

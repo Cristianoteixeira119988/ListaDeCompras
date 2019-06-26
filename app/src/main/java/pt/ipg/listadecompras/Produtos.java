@@ -9,7 +9,7 @@ public class Produtos {
     private long categoria;
     private int quantidade;
     private String dataqueacabou;
-    private Long nomelista;
+    private long nomelista;
 
     public long getNomelista() {
         return nomelista;
