@@ -142,7 +142,8 @@ public class BdListasTest {
         listas.setNomelista(nome1);
         listas.setDatacriacao(data);
 
-        int registosAlteradosListas = tableListas.update(listas.getContentValues(), BdTableListas._ID + "=?", new String[]{String.valueOf(idLista9)});
+        int registosAlteradosListas = tableListas.update(listas.getContentValues(), BdTableListas._ID + "=?", new String[]{String.valueOf(idLista8)});
+        assertEquals(1, registosAlteradosListas);
 
         cursorListas = getListas(tableListas);
         listas = getListaComID(cursorListas, idLista8);
@@ -234,7 +235,7 @@ public class BdListasTest {
 
         //Crud produtos
 
-        long id3 = criaProduto(tableProdutos, "Pão",, 5, "13-04-2019", "Lista6");
+        long id3 = (long) criaProduto(tableProdutos, "Pão",idBricolage, 5, "13-04-2019", idLista8);
         cursorProdutos = getProduto(tableProdutos);
         assertEquals(3, cursorProdutos.getCount());
 
@@ -286,15 +287,15 @@ public class BdListasTest {
 
     //tabela produtos
 
-    private long criaProduto(BdTableProdutos tableProdutos, String nome, Long categoriaa, int quantidade, String data, Long nomedalista) {
+    private long criaProduto(BdTableProdutos tableProdutos, String nome, long categoria, int quantidade, String data, long nomedalista) {
 
         Produtos produtos = new Produtos();
 
         produtos.setNomeproduto(nome);
-        produtos.setCategoria(categoriaa);
+        produtos.setCategoria(categoria);
         produtos.setQuantidade(quantidade);
         produtos.setDataqueacabou(data);
-        produtos.setNomelista(Long.valueOf(nomedalista));
+        produtos.setNomelista(nomedalista);
 
 
         long id = tableProdutos.insert(produtos.getContentValues());

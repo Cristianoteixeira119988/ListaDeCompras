@@ -112,6 +112,7 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
 
         String nomeproduto = edittextnomeproduto.getText().toString();
         String quantidade= edittextquantidadeproduto.getText().toString();
+        String textodata = edittextdataquefaltou.getText().toString();
         int numeroqt;
         numeroqt= Integer.parseInt(quantidade);
 
@@ -135,36 +136,11 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
             Produtos produtos = new Produtos();
             long idCategoria = spinnercategorias.getSelectedItemId();
 
-            String textodata = edittextdataquefaltou.getText().toString();
-            Calendar calendario = Calendar.getInstance();
-            boolean Erros = false;
-
-            try {
-
-                calendario.setLenient(false);
-
-                //da exceção se o ano, o mes e/ou o dia não forem numeros
-                calendario.set(Integer.parseInt(textodata.substring(6)), (Integer.parseInt(textodata.substring(3, 5))) - 1, Integer.parseInt(textodata.substring(0, 2)));
-
-                //ve se ano é valido(1º filme é de 1895, logo 1890 parece um bom valor)
-                //da exceção se a data for invalida
-                if (calendario.get(Calendar.YEAR) < 2000) {
-
-                    edittextdataquefaltou.setError(getString(R.string.data_invalida));
-                    edittextdataquefaltou.requestFocus();
-                    Erros = true;
-                }
-            } catch (Exception e) {
-
-                edittextdataquefaltou.setError(getString(R.string.data_invalida));
-                edittextdataquefaltou.requestFocus();
-                Erros = true;
-            }
-
             produtos.setNomeproduto(nomeproduto);
             produtos.setCategoria(idCategoria);
             produtos.setQuantidade(numeroqt);
             produtos.setDataqueacabou(textodata);
+
             getContentResolver().insert(ListasContentProvider.ENDERECO_PRODUTOS, produtos.getContentValues());
             Toast.makeText(this, getString(R.string.produto_inserido_com_sucesso), Toast.LENGTH_SHORT).show();
 
