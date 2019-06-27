@@ -12,7 +12,7 @@
     <string name="mercearia">Grocery Store</string>
     <string name="bricolage">Do It Yourself</string>
     <string name="vestu_rio">Clothing</string>
-    <string name="title_activity_criar_lista_mercearia">Create Grocery List</string>
+    <string name="title_activity_criar_lista_mercearia">Create list</string>
     <string name="nome_para_a_lista">Name for the list:</string>
     <string name="data_de_cria_o">Creation date</string>
     <string name="guardar">Save</string>
@@ -93,14 +93,16 @@
     <string name="categoria_eliminada_com_sucesso">" Category deleted successfully!"</string>
     <string name="nome_obrigatorio_geral">"Name required! "</string>
     <string name="title_activity_editar_produto2">"Edit Product "</string>
-    <string name="Erro">Erro</string>
-    <string name="nome_da_lista_a_adicionar">Nome da lista a adicionar:</string>
-    <string name="erro">erro</string>
-    <string name="nome_da_listaaa">Nome da lista:</string>
-    <string name="data_obrigatoria">Data obrigatoria</string>
-    <string name="data_invalida">Data invalida</string>
-    <string name="formato_da_data_invalido">Formato de data invalido!</string>
-    <string name="produto_alterado_com_sucesso">Produto alterado com sucesso</string>
+    <string name="Erro">Error</string>
+    <string name="nome_da_lista_a_adicionar">Name of the list to create:</string>
+    <string name="erro">error</string>
+    <string name="nome_da_listaaa">List name:</string>
+    <string name="data_obrigatoria">Date obrigatory</string>
+    <string name="data_invalida">Invalid date</string>
+    <string name="formato_da_data_invalido">Invalid date!</string>
+    <string name="produto_alterado_com_sucesso">Produto successfully update!</string>
     <string name="categoria_eleminada">Categoria eliminada com sucesso</string>
-    <string name="nao_possivel_eleminar_categoria">Erro: Não foi possível eliminar a categoria</string>
+    <string name="nao_possivel_eleminar_categoria">Error</string>
+    <string name="data_em_que_faltouu">"Date you were missing: "</string>
+    <string name="nome_da_listaa">List name:</string>
 </resources>

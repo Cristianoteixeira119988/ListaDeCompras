@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lista De Compras</string>
+    <string name="app_name">Lista de Compras</string>
     <string name="action_settings">Opções</string>
     <string name="adicionar_produto">Produtos</string>
     <string name="lista_total">Minhas listas</string>
@@ -13,7 +13,7 @@
     <string name="mercearia">Mercearia</string>
     <string name="bricolage">Bricolage</string>
     <string name="vestu_rio">Vestuário</string>
-    <string name="title_activity_criar_lista_mercearia">Criar Lista De Mercearia</string>
+    <string name="title_activity_criar_lista_mercearia">Criar Lista</string>
     <string name="nome_para_a_lista">Nome para a lista:</string>
     <string name="data_de_cria_o">Data de criação:</string>
     <string name="guardar">Guardar</string>
@@ -95,4 +95,9 @@
     <string name="formato_da_data_invalido">Formato de data invalido!</string>
     <string name="categoria_eleminada">Categoria eliminada com sucesso</string>
     <string name="nao_possivel_eleminar_categoria">Erro: Não foi possível eliminar a categoria</string>
+    <string name="Erro">Erro</string>
+    <string name="data_obrigatoria">Data obrigatoria</string>
+    <string name="nome_da_lista_a_adicionar">Nome da lista a adicionar:</string>
+    <string name="nome_da_listaaa">Nome da lista:</string>
+    <string name="produto_alterado_com_sucesso">Produto alterado com sucesso</string>
 </resources>
