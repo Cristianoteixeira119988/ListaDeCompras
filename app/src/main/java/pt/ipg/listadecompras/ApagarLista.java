@@ -36,7 +36,7 @@ public class ApagarLista extends AppCompatActivity {
             Intent intent = getIntent();
             long idLista = intent.getLongExtra(MinhasListas.ID_LISTA, -1);
             if (idLista == -1) {
-                Toast.makeText(this, "Erro: não foi possível apagar o lista", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
@@ -46,7 +46,7 @@ public class ApagarLista extends AppCompatActivity {
             Cursor cursor = getContentResolver().query(enderecoListaApagar, BdTableListas.TODAS_COLUNAS, null, null, null);
 
             if (!cursor.moveToNext()) {
-                Toast.makeText(this, "Erro: não foi possível apagar o lista", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
@@ -91,10 +91,10 @@ public class ApagarLista extends AppCompatActivity {
             int listasApagadas = getContentResolver().delete(enderecoListaApagar, null, null);
 
             if (listasApagadas == 1) {
-                Toast.makeText(this, "Lista eliminada com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.lista_apagada), Toast.LENGTH_LONG).show();
                 finish();
             } else {
-                Toast.makeText(this, "Erro: Não foi possível eliminar o lista", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
             }
     }
 }

@@ -92,4 +92,7 @@
     <string name="erro">erro</string>
     <string name="nome_da_listaa">Nome da lista:</string>
     <string name="data_invalida">Data invalida</string>
+    <string name="formato_da_data_invalido">Formato de data invalido!</string>
+    <string name="categoria_eleminada">Categoria eliminada com sucesso</string>
+    <string name="nao_possivel_eleminar_categoria">Erro: Não foi possível eliminar a categoria</string>
 </resources>

@@ -36,10 +36,7 @@ import java.util.Date;
 public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
 
-    private TextView txtViewVerData;
-    private Button botaoescolherdata;
-    Calendar calendario;
-    DatePickerDialog datapiker;
+
     private Spinner spinnercategorias;
     private EditText edittextnomeproduto;
     private EditText edittextquantidadeproduto;
@@ -59,6 +56,8 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
 
     private Uri enderecoProdutoEditar;
 
+    private EditText edittextdataquefaltou;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +71,7 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         spinnercategorias = (Spinner) findViewById(R.id.spinnerCategoriaEd);
         edittextquantidadeproduto = (EditText) findViewById(R.id.EditTextQuantidadeEd);
         spinnerNomeLista=(Spinner) findViewById(R.id.spinnerNomeDaListaEd);
+        edittextdataquefaltou= (EditText) findViewById(R.id.EditTextDataQueFaltouEd);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
 
@@ -201,13 +201,21 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
     }
 
     private void guardar() {
-        String nomeproduto= edittextnomeproduto.getText().toString();
+        String nomeproduto = edittextnomeproduto.getText().toString();
         String quantidade= edittextquantidadeproduto.getText().toString();
+        String data = edittextdataquefaltou.getText().toString();
         int numeroqt;
         numeroqt= Integer.parseInt(quantidade);
+        String[] dataSeparada = data.split("/");
 
+        int dia = Integer.parseInt(dataSeparada[0]);
+        int mes = Integer.parseInt(dataSeparada[1]);
+        int ano = Integer.parseInt(dataSeparada[2]);
 
-        if (nomeproduto.trim().length() == 0) {
+        if(((dia <= 0) | ( dia > 31 ))  || ((mes <= 0) | (mes > 12)) || ((ano <= 2010) | (ano > 2019)) || data.length() != 10 || data.charAt(2) != '/' || data.charAt(5) != '/' ) {
+            edittextdataquefaltou.setError(getString(R.string.formato_da_data_invalido));
+            edittextdataquefaltou.requestFocus();
+        }else if (nomeproduto.trim().length() == 0) {
             edittextnomeproduto.setError(getString(R.string.nome_obrigatorio_geral));
             edittextnomeproduto.requestFocus();
         } else if (nomeproduto.length() <= 3) {
@@ -219,30 +227,27 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         } else if (quantidade.trim().length() == 0) {
             edittextquantidadeproduto.setError(getString(R.string.quantidade_obrigatoria));
             edittextquantidadeproduto.requestFocus();
-        }else if (numeroqt<=0){
+        }else if (numeroqt<=0) {
             edittextquantidadeproduto.setError(getString(R.string.quantidade_invalida));
             edittextquantidadeproduto.requestFocus();
         } else {
+            // guardar os dados
+            Produtos produtos = new Produtos();
+            long idCategoria = spinnercategorias.getSelectedItemId();
+            long idLista = spinnerNomeLista.getSelectedItemId();
+
+            produtos.setNomeproduto(nomeproduto);
+            produtos.setCategoria(idCategoria);
+            produtos.setQuantidade(numeroqt);
+            produtos.setDataqueacabou(data);
+            produtos.setNomelista(idLista);
+
+            getContentResolver().insert(ListasContentProvider.ENDERECO_PRODUTOS, produtos.getContentValues());
+            Toast.makeText(this, getString(R.string.produto_alterado_com_sucesso), Toast.LENGTH_SHORT).show();
+
             finish();
-            Toast.makeText(EditarProduto2.this, getString(R.string.produto_inserido_com_sucesso), Toast.LENGTH_SHORT).show();
-        }
-        // guardar os dados
-        produtos.setNomeproduto(nomeproduto);
 
-        produtos.setQuantidade(numeroqt);
-        try {
-            getContentResolver().update(enderecoProdutoEditar, produtos.getContentValues(), null, null);
 
-            Toast.makeText(this, "Produto alterado com sucesso", Toast.LENGTH_SHORT).show();
-            finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    edittextnomeproduto,
-                    getString(R.string.erro),
-                    Snackbar.LENGTH_LONG)
-                    .show();
-
-            e.printStackTrace();
         }
     }
 
@@ -258,7 +263,14 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-       return null;
+        android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
+        );
+
+
+        android.support.v4.content.CursorLoader cursorLoader2 = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_LISTAS, BdTableListas.TODAS_COLUNAS, null, null, BdTableListas.CAMPO_NOME_LISTA
+        );
+
+        return cursorLoader;
     }
 
     /**

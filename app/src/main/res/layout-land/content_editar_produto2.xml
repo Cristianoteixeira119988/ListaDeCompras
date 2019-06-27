@@ -38,40 +38,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
-    <Button
-        android:id="@+id/buttonEscolherDataQueFaltou2"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/escolher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5" />
-
-    <TextView
-        android:id="@+id/textViewDataEd"
-        android:layout_width="214dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEscolherDataQueFaltou2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5" />
-
     <TextView
         android:id="@+id/textViewDataQueFaltou5"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/data_em_que_faltou"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerNomeDaListaEd" />
 
     <TextView
         android:id="@+id/textView33"
@@ -149,6 +128,23 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/EditTextQuantidadeEd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout8"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="223dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/EditTextDataQueFaltouEd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>

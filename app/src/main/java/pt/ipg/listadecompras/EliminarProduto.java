@@ -39,7 +39,7 @@ public class EliminarProduto extends AppCompatActivity {
             Intent intent = getIntent();
             long idProduto = intent.getLongExtra(TodosProduto.ID_PRODUTO, -1);
             if (idProduto == -1) {
-                Toast.makeText(this, "Erro: não foi possível apagar o Produto", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
@@ -49,7 +49,7 @@ public class EliminarProduto extends AppCompatActivity {
             Cursor cursor = getContentResolver().query(enderecoProdutoApagar, BdTableProdutos.TODAS_COLUNAS, null, null, null);
 
             if (!cursor.moveToNext()) {
-                Toast.makeText(this, "Erro: não foi possível apagar o produto", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
@@ -96,10 +96,10 @@ public class EliminarProduto extends AppCompatActivity {
             int ProdutosApagados = getContentResolver().delete(enderecoProdutoApagar, null, null);
 
             if (ProdutosApagados == 1) {
-                Toast.makeText(this, "Produto eliminado com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.produto_eliminado_toast), Toast.LENGTH_LONG).show();
                 finish();
             } else {
-                Toast.makeText(this, "Erro: Não foi possível eliminar o produto", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
             }
         }
     }

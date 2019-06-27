@@ -37,32 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataEd" />
-
-    <Button
-        android:id="@+id/buttonEscolherDataQueFaltou2"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/escolher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5" />
-
-    <TextView
-        android:id="@+id/textViewDataEd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEscolherDataQueFaltou2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10" />
 
     <TextView
         android:id="@+id/textViewDataQueFaltou5"
@@ -178,6 +153,24 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/EditTextQuantidadeEd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout10"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDataQueFaltou5">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/EditTextDataQueFaltouEd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>

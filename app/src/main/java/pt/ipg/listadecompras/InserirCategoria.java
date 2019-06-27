@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class InserirCategoria extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
+    private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
 
     private EditText edittextnomedacategoria;
 
@@ -33,6 +33,7 @@ public class InserirCategoria extends AppCompatActivity implements LoaderManager
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
 
         edittextnomedacategoria=(EditText) findViewById(R.id.EditTextNomeDaCategoria);
 
@@ -40,6 +41,13 @@ public class InserirCategoria extends AppCompatActivity implements LoaderManager
 
 
 
+    }
+    @Override
+    protected void onResume() {
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+
+
+        super.onResume();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

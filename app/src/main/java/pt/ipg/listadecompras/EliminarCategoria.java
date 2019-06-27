@@ -35,7 +35,7 @@ public class EliminarCategoria extends AppCompatActivity {
             Intent intent = getIntent();
             long idCategoria = intent.getLongExtra(Categorias.ID_CATEGORIA, -1);
             if (idCategoria == -1) {
-                Toast.makeText(this, "Erro: não foi possível apagar a Categoria", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.nao_possivel_eleminar_categoria), Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
@@ -45,7 +45,7 @@ public class EliminarCategoria extends AppCompatActivity {
             Cursor cursor = getContentResolver().query(enderecoCategoriaApagar, BdTableCategorias.TODAS_COLUNAS, null, null, null);
 
             if (!cursor.moveToNext()) {
-                Toast.makeText(this, "Erro: não foi possível apagar a Categoria", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.nao_possivel_eleminar_categoria), Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
@@ -89,10 +89,10 @@ public class EliminarCategoria extends AppCompatActivity {
             int CateogriasApagadas = getContentResolver().delete(enderecoCategoriaApagar, null, null);
 
             if (CateogriasApagadas == 1) {
-                Toast.makeText(this, "Categoria eliminada com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.categoria_eleminada), Toast.LENGTH_LONG).show();
                 finish();
             } else {
-                Toast.makeText(this, "Erro: Não foi possível eliminar a categoria", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.nao_possivel_eleminar_categoria), Toast.LENGTH_LONG).show();
             }
         }
     }
