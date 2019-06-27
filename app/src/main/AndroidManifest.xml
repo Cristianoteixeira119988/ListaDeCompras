@@ -30,10 +30,6 @@
             android:label="@string/title_activity_eliminar_produto"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditarProduto"
-            android:label="@string/title_activity_editar_produto"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".InserirProduto"
             android:label="@string/title_activity_inserir_produto"
             android:theme="@style/AppTheme.NoActionBar" />

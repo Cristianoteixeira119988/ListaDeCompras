@@ -35,14 +35,12 @@ import java.util.Date;
 
 public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
-
+    private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
+    private static final int ID_CURSO_LOADER_LISTAS = 0;
 
     private Spinner spinnercategorias;
     private EditText edittextnomeproduto;
     private EditText edittextquantidadeproduto;
-
-
-    private static final int ID_CURSO_LOADER_PRODUTOS = 0;
 
     private Spinner spinnerNomeLista;
 
@@ -73,7 +71,8 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         spinnerNomeLista=(Spinner) findViewById(R.id.spinnerNomeDaListaEd);
         edittextdataquefaltou= (EditText) findViewById(R.id.EditTextDataQueFaltouEd);
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTAS, null, this);
 
 
         Intent intent = getIntent();
@@ -81,7 +80,7 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         long idProduto = intent.getLongExtra(TodosProduto.ID_PRODUTO, -1);
 
         if (idProduto == -1) {
-            Toast.makeText(this, "Erro: não foi possível ler o Produto", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -91,7 +90,7 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
         Cursor cursor = getContentResolver().query(enderecoProdutoEditar, BdTableProdutos.TODAS_COLUNAS, null, null, null);
 
         if (!cursor.moveToNext()) {
-            Toast.makeText(this, "Erro: não foi possível ler o Produto", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.erro), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -145,8 +144,8 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
 
     @Override
     protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
-
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_LISTAS, null, this);
         super.onResume();
     }
 
@@ -263,14 +262,17 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
-        );
+        if (id==ID_CURSO_LOADER_CATEGORIAS) {
+            android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
+            );
+            return cursorLoader;
+        }else if(id==ID_CURSO_LOADER_LISTAS) {
+            android.support.v4.content.CursorLoader cursorLoader2 = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_LISTAS, BdTableListas.TODAS_COLUNAS, null, null, BdTableListas.CAMPO_NOME_LISTA
+            );
+            return cursorLoader2;
+        }
 
-
-        android.support.v4.content.CursorLoader cursorLoader2 = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_LISTAS, BdTableListas.TODAS_COLUNAS, null, null, BdTableListas.CAMPO_NOME_LISTA
-        );
-
-        return cursorLoader;
+        return null;
     }
 
     /**
@@ -316,14 +318,18 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        mostraCategoriasSpinner(data);
-        categoriasCarregadas = true;
-        actualizaCategoriaSelecionada();
 
+        int id = loader.getId();
+        if (id == ID_CURSO_LOADER_CATEGORIAS) {
+            mostraCategoriasSpinner(data);
+            categoriasCarregadas = true;
+            actualizaCategoriaSelecionada();
+        } else if (id == ID_CURSO_LOADER_LISTAS){
+            mostraListasSpinner(data);
+            ListasCarregadas = true;
+            actualizaListaSelecionada();
+        }
 
-        mostraListasSpinner(data);
-        ListasCarregadas = true;
-        actualizaListaSelecionada();
     }
 
     /**
@@ -337,12 +343,22 @@ public class EditarProduto2 extends AppCompatActivity  implements LoaderManager.
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        categoriasCarregadas = false;
-        categoriaAtualizada = false;
-        ListasAtualizada= false;
-        ListasAtualizada = false;
-        mostraListasSpinner(null);
-        mostraCategoriasSpinner(null);
+
+        int id = loader.getId();
+        if (id == ID_CURSO_LOADER_CATEGORIAS) {
+            categoriasCarregadas = false;
+            categoriaAtualizada = false;
+            mostraCategoriasSpinner(null);
+        } else if (id == ID_CURSO_LOADER_LISTAS){
+            ListasAtualizada= false;
+            ListasAtualizada = false;
+            mostraListasSpinner(null);
+        }
+
+
+
+
+
     }
 }
 
