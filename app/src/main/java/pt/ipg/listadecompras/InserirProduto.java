@@ -24,7 +24,9 @@ import java.util.Calendar;
 
 
 public class InserirProduto extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor>{
-    private static final int ID_CURSO_LOADER_PRODUTOS = 0;
+    private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
+    private static final int ID_CURSO_LOADER_LISTAS = 0;
+
 
 
     private EditText edittextnomeproduto;
@@ -43,7 +45,8 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTAS, null, this);
 
 
         edittextnomeproduto=(EditText) findViewById(R.id.EditTextNomeDoProduto);
@@ -58,7 +61,8 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
 
     @Override
     protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_PRODUTOS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_LISTAS, null, this);
 
 
         super.onResume();
@@ -181,20 +185,27 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
 
-            android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
-            );
+            if (id==ID_CURSO_LOADER_CATEGORIAS) {
+                android.support.v4.content.CursorLoader cursorLoader = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
+                );
+                return cursorLoader;
+            }else if(id==ID_CURSO_LOADER_LISTAS) {
+                android.support.v4.content.CursorLoader cursorLoader2 = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_LISTAS, BdTableListas.TODAS_COLUNAS, null, null, BdTableListas.CAMPO_NOME_LISTA
+                );
+                return cursorLoader2;
+            }
 
-
-            android.support.v4.content.CursorLoader cursorLoader2 = new android.support.v4.content.CursorLoader(this, ListasContentProvider.ENDERECO_LISTAS, BdTableListas.TODAS_COLUNAS, null, null, BdTableListas.CAMPO_NOME_LISTA
-            );
-
-            return cursorLoader;
+            return null;
     }
 
     @Override
     public void onLoadFinished(@NonNull android.support.v4.content.Loader<Cursor> loader, Cursor data) {
-        mostraCategoriasSpinner(data);
-        mostraListasSpinner(data);
+        int id = loader.getId();
+        if (id == ID_CURSO_LOADER_CATEGORIAS) {
+            mostraCategoriasSpinner(data);
+        } else if (id == ID_CURSO_LOADER_LISTAS){
+            mostraListasSpinner(data);
+        }
 
 
 
@@ -202,9 +213,13 @@ public class InserirProduto extends AppCompatActivity  implements LoaderManager.
 
     @Override
     public void onLoaderReset(@NonNull android.support.v4.content.Loader<Cursor> loader) {
+        int id = loader.getId();
+        if (id == ID_CURSO_LOADER_CATEGORIAS) {
+            mostraCategoriasSpinner(null);
+        } else if (id == ID_CURSO_LOADER_LISTAS){
+            mostraListasSpinner(null);
+        }
 
-        mostraCategoriasSpinner(null);
-        mostraListasSpinner(null);
 
     }
 
